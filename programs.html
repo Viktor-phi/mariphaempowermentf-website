@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programs - Maripha Empowerment Foundation</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="MEF.png" alt="MEF Logo" />
+        MARIPHA EMPOWERMENT FOUNDATION
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="mission.html">Our Mission</a></li>
+          <li><a href="programs.html" class="active">Programs</a></li>
+          <li><a href="board.html">Our Board</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Programs Page -->
+  <section class="page-banner programs-banner">
+    <div class="container">
+      <h1>Our Programs</h1>
+    </div>
+  </section>
+
+  <!-- Programs Content -->
+  <section class="programs-content">
+    <div class="container">
+      <h2>Initiatives That Drive Change</h2>
+      <div class="program-list">
+        <div class="program-item">
+          <h3>Regenerative Agriculture</h3>
+          <p>
+            Empowering the next generation through education and training in regenerative agriculture.
+          </p>
+        </div>
+        <div class="program-item">
+          <h3>Community Development</h3>
+          <p>
+            Working hand-in-hand with local farmers and communities to foster growth.
+          </p>
+        </div>
+        <div class="program-item">
+          <h3>Collaborative Research</h3>
+          <p>
+            Collaborating with stakeholders to advance indigenous food products.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shared Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Maripha Empowerment Foundation. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let slides = document.getElementsByClassName("slide");
+      let dots = document.getElementsByClassName("dot");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+      setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+  </script>
+</body>
+</html>
