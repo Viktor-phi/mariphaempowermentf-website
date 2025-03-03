@@ -246,7 +246,7 @@ body {
 
 /* Shared styles for all page banners */
 .page-banner {
-  padding: 5rem 0;
+  padding: 3rem 0;
   color: var(--bg-white);
   text-align: center;
   margin-top: 70px; /* Offset for fixed header */
@@ -505,9 +505,14 @@ footer .social-links a:hover {
     align-items: center;
   }
 
-  .team-list {
+  .team-list {  
     flex-direction: column;
     align-items: center;
+  }
+
+  /* Add margin to "Our Story" section on mobile */
+  .overview {
+    margin-top: 2rem;
   }
 }
 
