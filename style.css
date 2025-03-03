@@ -246,7 +246,7 @@ body {
 
 /* Shared styles for all page banners */
 .page-banner {
-  padding: 3rem 0;
+  padding: 1rem 0; /* Reduce top and bottom padding */ 
   color: var(--bg-white);
   text-align: center;
   margin-top: 70px; /* Offset for fixed header */
@@ -495,11 +495,6 @@ footer .social-links a:hover {
 
   .nav-toggle {
     display: block; /* Show toggle button on mobile */
-  }
-
-  /* Adjustment added here for mobile page banners */
-  .page-banner {
-    padding: 2rem 0 1rem 0; /* Reduced padding for mobile */
   }
 
   .about-text-image,
