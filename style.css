@@ -246,7 +246,7 @@ body {
 
 /* Shared styles for all page banners */
 .page-banner {
-  padding: 0.5rem 0; /* Reduce top and bottom padding */ 
+  padding: 4rem 0; /* Reduce top and bottom padding */ 
   color: var(--bg-white);
   text-align: center;
   margin-top: 70px; /* Offset for fixed header */
@@ -278,6 +278,7 @@ body {
 
 /* About Content */
 .about-content {
+  margin-top: 30px; /* Match the header height */
   padding: 4rem 0;
 }
 
