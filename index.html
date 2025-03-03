@@ -7,52 +7,6 @@
   <link rel="stylesheet" type="text/css" href="style.css" />
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    .sliding-panel-container {
-      position: relative;
-      max-width: 100%;
-      margin: auto;
-      overflow: hidden;
-    }
-    .sliding-panel {
-      display: flex;
-      width: 300%; /* Adjust based on the number of images */
-      animation: slide 10s infinite;
-    }
-    .sliding-panel img {
-      width: 300px; /* Set a fixed width */
-      height: 300px; /* Set a fixed height */
-      object-fit: cover; /* Ensure the image covers the area without distortion */
-      margin: auto;
-    }
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      padding: 16px;
-      margin-top: -22px;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      transition: 0.6s ease;
-      border-radius: 0 3px 3px 0;
-      user-select: none;
-    }
-    .next {
-      right: 0;
-      border-radius: 3px 0 0 3px;
-    }
-    .prev:hover, .next:hover {
-      background-color: rgba(0,0,0,0.8);
-    }
-    @keyframes slide {
-      0% { transform: translateX(0); }
-      33% { transform: translateX(-33.33%); }
-      66% { transform: translateX(-66.66%); }
-      100% { transform: translateX(0); }
-    }
-  </style>
 </head>
 <body>
   <!-- Shared Header -->
@@ -74,11 +28,12 @@
       </nav>
     </div>
   </header>
+
   <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1 class="uppercase-title">Empowering Communities, Inspiring Change</h1>
+      <h1>Empowering Communities, Inspiring Change</h1>
       <p>Join us in our journey to make a difference.</p>
       <a href="mission.html" class="btn">Learn More</a>
     </div>
@@ -117,20 +72,42 @@
       <h2>Impact Stories</h2>
       <div class="sliding-panel-container">
         <div class="sliding-panel">
-          <img src="Regenerative.jpg" alt="Impact Story 1">
-          <img src="Community.jpeg" alt="Impact Story 2">
-          <img src="collaborative.jpeg" alt="Impact Story 3">
-          <img src="Obate1.jpg" alt="Impact Story 4">
-          <img src="Obate2.jpg" alt="Impact Story 5">
-          <img src="Obate3.jpg" alt="Impact Story 6">
-          <img src="Obate4.jpeg" alt="Impact Story 7">
-          <img src="Obate5.jpeg" alt="Impact Story 8">
-          <img src="Obate7.jpg" alt="Impact Story 9">
-          <img src="Obate8.jpg" alt="Impact Story 10">
-          <img src="Obate9.jpg" alt="Impact Story 11">
+          <div class="slide">
+            <img src="Regenerative.jpg" alt="Community members participating in regenerative agriculture training" loading="lazy" />
+          </div>
+          <div class="slide">
+            <img src="Community.jpeg" alt="Local farmers collaborating on sustainable farming practices" loading="lazy" />
+          </div>
+          <div class="slide">
+            <img src="collaborative.jpeg" alt="Youth engagement in environmental conservation projects" loading="lazy" />
+          </div>
+          <div class="slide">
+            <img src="Obate1.jpg" alt="Empowering women through agricultural entrepreneurship" loading="lazy" />
+          </div>
+          <div class="slide">
+            <img src="Obate2.jpg" alt="Preserving Indigenous knowledge in farming techniques" loading="lazy" />
+          </div>
+          <div class="slide">
+            <img src="Obate3.jpg" alt="Mentoring young agro-entrepreneurs" loading="lazy" />
+          </div>
+          <div class="slide">
+            <img src="Obate4.jpeg" alt="Promoting financial inclusion in rural communities" loading="lazy" />
+          </div>
+          <div class="slide">
+            <img src="Obate5.jpeg" alt="Building resilient communities through sustainable practices" loading="lazy" />
+          </div>
+          <div class="slide">
+            <img src="Obate7.jpg" alt="Advancing food sovereignty through local initiatives" loading="lazy" />
+          </div>
+          <div class="slide">
+            <img src="Obate8.jpg" alt="Fostering rural economic development" loading="lazy" />
+          </div>
+          <div class="slide">
+            <img src="Obate9.jpg" alt="Mentoring the next generation of agro-entrepreneurs" loading="lazy" />
+          </div>
         </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <button class="prev" onclick="plusSlides(-1)" aria-label="Previous Slide">❮</button>
+        <button class="next" onclick="plusSlides(1)" aria-label="Next Slide">❯</button>
       </div>
     </div>
   </section>
@@ -138,11 +115,11 @@
   <!-- Shared Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2025 Maripha Empowerment Foundation. All rights reserved.</p>
+      <p>© 2025 Maripha Empowerment Foundation. All rights reserved.</p>
       <div class="social-links">
-        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://facebook.com/yourpage" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com/yourhandle" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
   </footer>
@@ -153,19 +130,27 @@
     let slideTimeout;
 
     function showSlides() {
-      let slides = document.getElementsByClassName("sliding-panel")[0];
-      slides.style.transform = `translateX(${-slideIndex * 300}px)`;
+      const slides = document.querySelector('.sliding-panel');
+      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
       slideIndex++;
-      if (slideIndex >= slides.children.length) {slideIndex = 0}
+      if (slideIndex >= slides.children.length) {
+        slideIndex = 0;
+      }
       slideTimeout = setTimeout(showSlides, 2000); // Change image every 2 seconds
     }
 
     function plusSlides(n) {
-      clearTimeout(slideTimeout); // Stop the automatic sliding
+      clearTimeout(slideTimeout);
+      const slides = document.querySelector('.sliding-panel');
       slideIndex += n;
-      if (slideIndex < 0) {slideIndex = slides.children.length - 1}
-      if (slideIndex >= slides.children.length) {slideIndex = 0}
-      showSlides();
+      if (slideIndex < 0) {
+        slideIndex = slides.children.length - 1;
+      }
+      if (slideIndex >= slides.children.length) {
+        slideIndex = 0;
+      }
+      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+      slideTimeout = setTimeout(showSlides, 2000);
     }
 
     showSlides();

@@ -1,380 +1,523 @@
-/* Global styles */
+/* Define CSS variables for maintainability */
+:root {
+  --primary-color: #007BFF; /* Main brand color */
+  --hover-color: #0056b3;   /* Darker shade for hover */
+  --text-color: #333;       /* Default text color */
+  --bg-light: #f9f9f9;      /* Light background */
+  --bg-white: #fff;         /* White background */
+  --border-color: #ddd;     /* Border color */
+}
+
+/* Global styles and resets */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
-  }
-  
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Site Header */
-  .site-header {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-  }
-  .site-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-  }
-  .site-header .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-  }
-  .site-header .logo img {
-    width: 40px;
-    margin-right: 10px;
-  }
-  .main-nav ul {
-    list-style: none;
-    display: flex;
-  }
-  .main-nav li {
-    margin-left: 2rem;
-  }
-  .main-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  .main-nav a:hover,
-  .main-nav a.active {
-    color: #007BFF;
-  }
-  
-  /* Hero Section */
-  .hero {
-    position: relative;
-    background: url('Black2.jpg') no-repeat center center/cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    margin-top: 70px; /* Offset for fixed header */
-  }
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-  }
-  .hero-content {
-    position: relative;
-    z-index: 2;
-  }
-  .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-  .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%; /* Ensures consistent font size across browsers */
+}
 
-  
-  /* Button Styling */
-  .btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background-color: #007BFF;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  .btn:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Overview Section (Home Page) */
-  .overview {
-    padding: 4rem 0;
-    background-color: #fff;
-    text-align: center;
-  }
-  .overview h2 {
-    margin-bottom: 1.5rem;
-  }
-  .overview p {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-  }
-  .overview-cards {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
-  .overview-cards .card {
-    background-color: #f1f1f1;
-    padding: 2rem;
-    margin: 1rem;
-    border-radius: 5px;
-    text-align: center;
-    width: 300px;
-  }
-  .overview-cards .card h3 {
-    margin-bottom: 1rem;
-  }
-  .overview-cards .card p {
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Shared styles for all page banners */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-light);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Site Header */
+.site-header {
+  background-color: var(--bg-white);
+  border-bottom: 1px solid var(--border-color);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.site-header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.site-header .logo img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+}
+
+.main-nav li {
+  margin-left: 2rem;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--primary-color);
+}
+
+/* Style the toggle button */
+.nav-toggle {
+  display: none; /* Hidden by default */
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color); /* Matches site text color */
+}
+
+.nav-toggle:focus {
+  outline: 2px solid var(--primary-color); /* Accessibility enhancement */
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  background: url('Black2.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--bg-white);
+  margin-top: 70px; /* Offset for fixed header */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase; /* Consistent with your update */
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Button Styling */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--bg-white);
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--hover-color);
+}
+
+/* Overview Section (Home Page) */
+.overview {
+  padding: 4rem 0;
+  background-color: var(--bg-white);
+  text-align: center;
+}
+
+.overview h2 {
+  margin-bottom: 1.5rem;
+}
+
+.overview p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.overview-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.overview-cards .card {
+  background-color: #f1f1f1; /* Kept as is for contrast */
+  padding: 2rem;
+  margin: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  width: 300px;
+}
+
+.overview-cards .card h3 {
+  margin-bottom: 1rem;
+}
+
+.overview-cards .card p {
+  margin-bottom: 1.5rem;
+}
+
+/* Sliding Panel Styles */
+.sliding-panel-container {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.sliding-panel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 100%;
+  position: relative;
+  aspect-ratio: 1 / 1; /* Retained from your update */
+}
+
+.slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: var(--bg-white);
+  font-weight: bold;
+  font-size: 18px;
+  transition: background-color 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Shared styles for all page banners */
 .page-banner {
-    padding: 5rem 0;
-    color: #fff;
-    text-align: center;
-    margin-top: 70px; /* Adjust if needed */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-  
-  /* Specific background images for each page banner */
-  .page-banner.about-banner {
-    background-image: url('Back.jpeg');
-  }
-  
-  .page-banner.mission-banner {
-    background-image: url('mission.jpeg');
-  }
-  
-  .page-banner.programs-banner {
-    background-image: url('program.jpg');
-  }
-  
-  .page-banner.board-banner {
-    background-image: url('board.jpg');
-  }
-  
-  .page-banner.contact-banner {
-    background-image: url('contact.jpg');
+  padding: 5rem 0;
+  color: var(--bg-white);
+  text-align: center;
+  margin-top: 70px; /* Offset for fixed header */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* Specific background images for each page banner */
+.page-banner.about-banner {
+  background-image: url('Back.jpeg');
+}
+
+.page-banner.mission-banner {
+  background-image: url('mission.jpeg');
+}
+
+.page-banner.programs-banner {
+  background-image: url('program.jpg');
+}
+
+.page-banner.board-banner {
+  background-image: url('board.jpg');
+}
+
+.page-banner.contact-banner {
+  background-image: url('contact.jpg');
+}
+
+/* About Content */
+.about-content {
+  padding: 4rem 0;
+}
+
+.about-text-image {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.about-text-image .text,
+.about-text-image .image {
+  flex: 1;
+  padding: 1rem;
+}
+
+.about-text-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Mission Content */
+.mission-content {
+  padding: 4rem 0;
+}
+
+.mission-text {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.mission-values {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.mission-item {
+  background-color: var(--bg-white);
+  padding: 2rem;
+  margin: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  flex: 1;
+  max-width: 300px;
+  text-align: center;
+}
+
+.mission-item i {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+/* Programs Content */
+.programs-content {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.programs-content h2 {
+  margin-bottom: 2rem;
+}
+
+.program-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.program-item {
+  background-color: var(--bg-white);
+  padding: 2rem;
+  margin: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  flex: 1;
+  max-width: 300px;
+  text-align: center;
+}
+
+.program-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+/* Board Content */
+.board-content {
+  padding: 4rem 0;
+  background-color: #f1f1f1; /* Kept for contrast */
+  text-align: center;
+}
+
+.board-content h2 {
+  margin-bottom: 2rem;
+}
+
+.board-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.board-member {
+  background-color: var(--bg-white);
+  padding: 2rem;
+  margin: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  text-align: center;
+  flex: 1;
+  max-width: 300px;
+}
+
+.board-member img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.board-member h3 {
+  margin: 0.5rem 0;
+}
+
+.board-member .role {
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.board-member p {
+  font-size: 0.9rem;
+  color: #555; /* Kept for readability */
+}
+
+/* Contact Content */
+.contact-content {
+  padding: 4rem 0;
+  background-color: var(--bg-white);
+  text-align: center;
+}
+
+.contact-content h2 {
+  margin-bottom: 2rem;
+}
+
+#contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc; /* Kept as is for simplicity */
+  border-radius: 5px;
+}
+
+/* Footer */
+footer {
+  background-color: var(--text-color);
+  color: var(--bg-white);
+  padding: 1rem 0;
+  text-align: center;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+footer .social-links a {
+  color: var(--bg-white);
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+footer .social-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .main-nav ul {
+    flex-direction: column;
+    background-color: var(--bg-white);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    display: none;
   }
 
-  /* About Content */
-  .about-content {
-    padding: 4rem 0;
-  }
-  .about-text-image {
+  .main-nav ul.active {
     display: flex;
-    align-items: flex-start; /* Align items at the start */
-    flex-wrap: wrap;
   }
-  .about-text-image .text,
-  .about-text-image .image {
-    flex: 1;
-    padding: 1rem;
+
+  .main-nav li {
+    margin: 1rem 0;
   }
-  .about-text-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    }
-  
-  /* Mission Content */
-  .mission-content {
-    padding: 4rem 0;
+
+  .nav-toggle {
+    display: block; /* Show toggle button on mobile */
   }
-  .mission-text {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  .mission-values {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
-  .mission-item {
-    background-color: #fff;
-    padding: 2rem;
-    margin: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    flex: 1;
-    max-width: 300px;
-    text-align: center;
-  }
-  .mission-item i {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: #007BFF;
-  }
-  
-  /* Programs Content */
-  .programs-content {
-    padding: 4rem 0;
-    text-align: center;
-  }
-  .programs-content h2 {
-    margin-bottom: 2rem;
-  }
-  .program-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
-  .program-item {
-    background-color: #fff;
-    padding: 2rem;
-    margin: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    flex: 1;
-    max-width: 300px;
-    text-align: center;
-  }
-  
-  .program-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-  }
-  
-  /* Board Content */
-  .board-content {
-    padding: 4rem 0;
-    background-color: #f1f1f1;
-    text-align: center;
-  }
-  .board-content h2 {
-    margin-bottom: 2rem;
-  }
+
+  .about-text-image,
+  .mission-values,
+  .program-list,
   .board-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
   }
+
+  .team-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Additional breakpoint for tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .overview-cards .card,
+  .mission-item,
+  .program-item,
   .board-member {
-    background-color: #fff;
-    padding: 2rem;
-    margin: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    text-align: center;
-    flex: 1;
-    max-width: 300px;
+    flex-basis: 45%; /* Slightly wider for tablet screens */
+    max-width: 350px;
   }
-  .board-member img {
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 1rem;
-  }
-  .board-member h3 {
-    margin: 0.5rem 0;
-  }
-  .board-member .role {
-    font-weight: bold;
-    color: #007BFF;
-    margin-bottom: 0.5rem;
-  }
-  .board-member p {
-    font-size: 0.9rem;
-    color: #555;
-  }
-  
-  /* Contact Content */
-  .contact-content {
-    padding: 4rem 0;
-    background-color: #fff;
-    text-align: center;
-  }
-  .contact-content h2 {
-    margin-bottom: 2rem;
-  }
-  #contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  .form-group {
-    margin-bottom: 1.5rem;
-    text-align: left;
-  }
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  /* Footer */
-  footer {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
-  }
-  footer p {
-    margin-bottom: 0.5rem;
-  }
-  footer .social-links a {
-    color: #fff;
-    margin: 0 0.5rem;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-  }
-  footer .social-links a:hover {
-    color: #007BFF;
-  }
-  
-  /* Responsive Styling */
-  @media (max-width: 768px) {
-    .main-nav ul {
-      flex-direction: column;
-      background-color: #fff;
-      position: absolute;
-      top: 70px;
-      right: 0;
-      width: 200px;
-      display: none;
-    }
-    .main-nav ul.active {
-      display: flex;
-    }
-    .main-nav li {
-      margin: 1rem 0;
-    }
-    .about-text-image,
-    .mission-values,
-    .program-list,
-    .board-list {
-      flex-direction: column;
-      align-items: center;
-    }
-    .team-list {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
+}
