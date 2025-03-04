@@ -451,6 +451,28 @@ body {
   border-radius: 5px;
 }
 
+/* Board Member Social Links */
+.board-member .social-links {
+  margin-top: 1rem; /* Space above the link */
+  text-align: center; /* Center the link, matching the footer */
+}
+
+/* Default state: Show the LinkedIn icon permanently */
+.board-member .social-links a {
+  color: #333; /* Dark gray ensures visibility on a white background (e.g., var(--bg-white)) */
+  font-size: 1.2rem; /* Same size as footer icons */
+  margin: 0 0.5rem; /* Spacing, matching footer */
+  text-decoration: none; /* Removes underline */
+  transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+  opacity: 1; /* Fully visible by default */
+}
+
+/* Hover state: Hide the icon (disappear) */
+.board-member .social-links a:hover {
+  opacity: 0; /* Makes the icon disappear on hover */
+  color: transparent; /* Ensures no text color shows through */
+}
+
 /* Footer */
 footer {
   background-color: var(--text-color);
