@@ -81,31 +81,93 @@ body {
   color: var(--primary-color);
 }
 
-/* Style the toggle button */
+/* Dropdown Menu for 'About Us' */
+.main-nav .dropdown {
+  position: relative;
+}
+
+.main-nav .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--bg-white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px 0;
+  min-width: 150px;
+}
+
+.main-nav .dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.main-nav .dropdown-menu li {
+  margin: 0;
+}
+
+.main-nav .dropdown-menu a {
+  padding: 10px 20px;
+  color: var(--text-color);
+  text-transform: none;
+  font-weight: normal;
+}
+
+.main-nav .dropdown-menu a:hover {
+  background-color: var(--bg-light);
+}
+
+/* Sign In Button */
+.sign-in-btn {
+  background-color: var(--primary-color);
+  color: var(--bg-white);
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-left: 2rem;
+}
+
+.sign-in-btn:hover {
+  background-color: var(--hover-color);
+}
+
+/* Navigation Toggle for Mobile */
 .nav-toggle {
   display: none; /* Hidden by default */
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--text-color); /* Matches site text color */
+  color: var(--text-color);
 }
 
 .nav-toggle:focus {
-  outline: 2px solid var(--primary-color); /* Accessibility enhancement */
+  outline: 2px solid var(--primary-color);
 }
 
 /* Hero Section */
 .hero {
   position: relative;
-  background: url('Black2.jpg') no-repeat center center/cover;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: var(--bg-white);
+  color: var(black);
   margin-top: 70px; /* Offset for fixed header */
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('Black2.jpg') no-repeat center center fixed;
+  background-size: cover;
+  z-index: -2;
 }
 
 .hero-overlay {
@@ -114,19 +176,22 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  background-color: rgba(0, 0, 0, 0); /* Starts transparent, adjusted via JS */
+  transition: background-color 0.3s ease;
+  z-index: -1;
 }
 
 .hero-content {
-  position: relative;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  padding: 20px 40px;
+  border-radius: 5px;
   z-index: 2;
 }
 
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  text-transform: uppercase; /* Consistent with your update */
+  text-transform: uppercase;
 }
 
 .hero p {
@@ -149,7 +214,7 @@ body {
   background-color: var(--hover-color);
 }
 
-/* Overview Section (Home Page) */
+/* Overview Section */
 .overview {
   padding: 4rem 0;
   background-color: var(--bg-white);
@@ -165,78 +230,63 @@ body {
   font-size: 1.1rem;
 }
 
-.overview-cards {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
 }
 
-.overview-cards .card {
-  background-color: #f1f1f1; /* Kept as is for contrast */
+.overview-grid .card {
+  background-color: var(--bg-white);
   padding: 2rem;
-  margin: 1rem;
+  border: 1px solid var(--border-color);
   border-radius: 5px;
   text-align: center;
-  width: 300px;
 }
 
-.overview-cards .card h3 {
-  margin-bottom: 1rem;
-}
-
-.overview-cards .card p {
-  margin-bottom: 1.5rem;
-}
-
-/* Sliding Panel Styles */
-.sliding-panel-container {
+/* Carousel (Replaces Sliding Panel) */
+.carousel {
   position: relative;
   max-width: 100%;
   margin: auto;
   overflow: hidden;
 }
 
-.sliding-panel {
+.carousel-inner {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  gap: 1in; /* Add spacing between slides */
 }
 
-.slide {
-  flex: 0 0 100%;
-  position: relative;
-  aspect-ratio: 1 / 1; /* Retained from your update */
+.carousel-inner .slide {
+  flex: 0 0 auto;
+  width: calc(100% / 3 - 1in); /* Adjust width to fit 3 slides with spacing */
+  box-sizing: border-box;
 }
 
-.slide img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.carousel-inner img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 300px; /* Set a fixed height for all images */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  border-radius: 5px; /* Optional: Add rounded corners */
 }
 
 .prev,
 .next {
-  cursor: pointer;
   position: absolute;
   top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: var(--bg-white);
-  font-weight: bold;
-  font-size: 18px;
-  transition: background-color 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+  transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.5);
+  color: var(--bg-white);
+  padding: 10px;
+  cursor: pointer;
   border: none;
+  font-size: 18px;
 }
 
 .next {
   right: 0;
-  border-radius: 3px 0 0 3px;
 }
 
 .prev:hover,
@@ -244,59 +294,70 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Shared styles for all page banners */
+/* Page Banners */
 .page-banner {
-  padding: 6rem 0; /* Reduce top and bottom padding */ 
-  color: var(--bg-white);
+  position: relative;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  color: var(--bg-white);
   margin-top: 70px; /* Offset for fixed header */
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
 }
 
-/* Specific background images for each page banner */
-.page-banner.about-banner {
+.page-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.page-banner.about-banner::before {
   background-image: url('Back.jpeg');
 }
 
-.page-banner.mission-banner {
+.page-banner.mission-banner::before {
   background-image: url('mission.jpeg');
 }
 
-.page-banner.programs-banner {
+.page-banner.programs-banner::before {
   background-image: url('program.jpg');
 }
 
-.page-banner.board-banner {
+.page-banner.board-banner::before {
   background-image: url('board.jpg');
 }
 
-.page-banner.contact-banner {
+.page-banner.contact-banner::before {
   background-image: url('contact.jpg');
 }
 
 /* About Content */
 .about-content {
-  margin-top: 70px; /* Match the header height */
-  padding: 4rem 0;
+  padding: 80px 0 60px;
+  background-color: var(--bg-light);
 }
 
-.about-text-image {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
-.about-text-image .text,
-.about-text-image .image {
-  flex: 1;
-  padding: 1rem;
+.about-grid .text {
+  padding: 20px;
 }
 
-.about-text-image img {
+.about-grid .image img {
   width: 100%;
-  height: auto;
   border-radius: 5px;
 }
 
@@ -344,19 +405,16 @@ body {
 }
 
 .program-list {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
 .program-item {
   background-color: var(--bg-white);
   padding: 2rem;
-  margin: 1rem;
   border: 1px solid var(--border-color);
   border-radius: 5px;
-  flex: 1;
-  max-width: 300px;
   text-align: center;
 }
 
@@ -370,7 +428,7 @@ body {
 /* Board Content */
 .board-content {
   padding: 4rem 0;
-  background-color: #f1f1f1; /* Kept for contrast */
+  background-color: #f1f1f1;
   text-align: center;
 }
 
@@ -379,20 +437,17 @@ body {
 }
 
 .board-list {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
 .board-member {
   background-color: var(--bg-white);
   padding: 2rem;
-  margin: 1rem;
   border: 1px solid var(--border-color);
   border-radius: 5px;
   text-align: center;
-  flex: 1;
-  max-width: 300px;
 }
 
 .board-member img {
@@ -414,7 +469,23 @@ body {
 
 .board-member p {
   font-size: 0.9rem;
-  color: #555; /* Kept for readability */
+  color: #555;
+}
+
+.board-member .social-links {
+  margin-top: 1rem;
+}
+
+.board-member .social-links a {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.board-member .social-links a:hover {
+  opacity: 0;
 }
 
 /* Contact Content */
@@ -426,6 +497,22 @@ body {
 
 .contact-content h2 {
   margin-bottom: 2rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-details p {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+
+.contact-details i {
+  margin-right: 0.5rem;
+  color: var(--primary-color);
 }
 
 #contact-form {
@@ -447,38 +534,46 @@ body {
 .form-group textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #ccc; /* Kept as is for simplicity */
+  border: 1px solid #ccc;
   border-radius: 5px;
-}
-
-/* Board Member Social Links */
-.board-member .social-links {
-  margin-top: 1rem; /* Space above the link */
-  text-align: center; /* Center the link, matching the footer */
-}
-
-/* Default state: Show the LinkedIn icon permanently */
-.board-member .social-links a {
-  color: #333; /* Dark gray ensures visibility on a white background (e.g., var(--bg-white)) */
-  font-size: 1.2rem; /* Same size as footer icons */
-  margin: 0 0.5rem; /* Spacing, matching footer */
-  text-decoration: none; /* Removes underline */
-  transition: opacity 0.3s ease; /* Smooth transition for hover effect */
-  opacity: 1; /* Fully visible by default */
-}
-
-/* Hover state: Hide the icon (disappear) */
-.board-member .social-links a:hover {
-  opacity: 0; /* Makes the icon disappear on hover */
-  color: transparent; /* Ensures no text color shows through */
 }
 
 /* Footer */
 footer {
   background-color: var(--text-color);
   color: var(--bg-white);
-  padding: 1rem 0;
+  padding: 40px 0;
   text-align: center;
+}
+
+.newsletter {
+  margin-bottom: 20px;
+}
+
+.newsletter h3 {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+}
+
+.newsletter input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  width: 200px;
+}
+
+.newsletter button {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--bg-white);
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
 }
 
 footer p {
@@ -517,35 +612,38 @@ footer .social-links a:hover {
   }
 
   .nav-toggle {
-    display: block; /* Show toggle button on mobile */
+    display: block;
   }
 
-  .about-text-image,
+  .sign-in-btn {
+    display: none;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
   .mission-values,
   .program-list,
   .board-list {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
   }
 
-  .team-list {  
-    flex-direction: column;
-    align-items: center;
+  .contact-details {
+    text-align: left;
   }
 
-  /* Add margin to "Our Story" section on mobile */
   .overview {
     margin-top: 2rem;
   }
 }
 
-/* Additional breakpoint for tablets */
 @media (max-width: 1024px) and (min-width: 769px) {
-  .overview-cards .card,
+  .overview-grid .card,
   .mission-item,
   .program-item,
   .board-member {
-    flex-basis: 45%; /* Slightly wider for tablet screens */
+    flex-basis: 45%;
     max-width: 350px;
   }
 }

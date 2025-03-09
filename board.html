@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Board - Maripha Empowerment Foundation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-  <!-- Shared Header -->
+  <!-- Fixed Header with Dropdown Navigation -->
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo">
@@ -17,31 +18,40 @@
       </a>
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="mission.html">Our Mission</a></li>
-          <li><a href="programs.html">Programs</a></li>
-          <li><a href="board.html" class="active">Our Board</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html">HOME</a></li>
+          <li class="dropdown">
+            <a href="#">ABOUT US</a>
+            <ul class="dropdown-menu">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="mission.html">Our Mission</a></li>
+              <li><a href="board.html" class="active">Our Board</a></li>
+            </ul>
+          </li>
+          <li><a href="programs.html">PROGRAMS</a></li>
+          <li><a href="board.html">OUR BOARD</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
         </ul>
       </nav>
+      <button class="hamburger" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </header>
 
-  <!-- Our Board Page Banner -->
+  <!-- Banner with Fading Overlay -->
   <section class="page-banner board-banner">
+    <div class="banner-overlay"></div>
     <div class="container">
       <h1>Our Board</h1>
     </div>
   </section>
 
-  <!-- Board Content -->
+  <!-- Board Members Section -->
   <section class="board-content">
     <div class="container">
       <h2>Meet Our Board</h2>
-      <ul class="board-list">
-        <!-- Board Member 1 -->
-        <li class="board-member">
+      <div class="board-list">
+        <div class="board-member">
           <img src="Mariam.jpg" alt="Portrait of MARIAM OLORUNDARE, President of Maripha Empowerment Foundation" loading="lazy" />
           <h3>MARIAM OLORUNDARE</h3>
           <p class="role">President</p>
@@ -53,18 +63,21 @@
               <i class="fab fa-linkedin"></i>
             </a>
           </div>
-        </li>
-        <!-- Board Member 2 -->
-        <li class="board-member">
+        </div>
+        <div class="board-member">
           <img src="Pamela.jpg" alt="Portrait of PAMELA C. ETO, Board Member of Maripha Empowerment Foundation" loading="lazy" />
           <h3>PAMELA C. ETO</h3>
           <p class="role">Board Member</p>
           <p>
             Pamela C. Eto is a Project Coordinator specializing in Software Implementation in Toronto. With advanced degrees in Petroleum Engineering and Project Management, she is passionate about agriculture and innovation.
           </p>
-        </li>
-        <!-- Board Member 3 -->
-        <li class="board-member">
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/pameleto264/?originalSubdomain=ca" target="_blank" rel="noopener" aria-label="Pamela C. Eto on LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+        <div class="board-member">
           <img src="Victor.jpg" alt="Portrait of VICTOR IBETO, Board Member of Maripha Empowerment Foundation" loading="lazy" />
           <h3>VICTOR IBETO</h3>
           <p class="role">Board Member</p>
@@ -76,9 +89,8 @@
               <i class="fab fa-linkedin"></i>
             </a>
           </div>
-        </li>
-        <!-- Board Member 4 -->
-        <li class="board-member">
+        </div>
+        <div class="board-member">
           <img src="Omotesho.jpg" alt="Portrait of OLUBUNMI A. OMOTESHO, Board Member of Maripha Empowerment Foundation" loading="lazy" />
           <h3>OLUBUNMI A. OMOTESHO</h3>
           <p class="role">Board Member</p>
@@ -90,9 +102,8 @@
               <i class="fab fa-linkedin"></i>
             </a>
           </div>
-        </li>
-        <!-- Board Member 5 -->
-        <li class="board-member">
+        </div>
+        <div class="board-member">
           <img src="Brian.jpg" alt="Portrait of BRIAN STEPHENSON, Board Member of Maripha Empowerment Foundation" loading="lazy" />
           <h3>BRIAN STEPHENSON</h3>
           <p class="role">Board Member</p>
@@ -104,9 +115,8 @@
               <i class="fab fa-linkedin"></i>
             </a>
           </div>
-        </li>
-        <!-- Board Member 6 -->
-        <li class="board-member">
+        </div>
+        <div class="board-member">
           <img src="Olusola.jpg" alt="Portrait of OLUSOLA SERIKI, Board Member of Maripha Empowerment Foundation" loading="lazy" />
           <h3>OLUSOLA SERIKI</h3>
           <p class="role">Board Member</p>
@@ -118,12 +128,12 @@
               <i class="fab fa-linkedin"></i>
             </a>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Shared Footer -->
+  <!-- Footer -->
   <footer>
     <div class="container">
       <p>© 2025 Maripha Empowerment Foundation. All rights reserved.</p>
@@ -135,7 +145,15 @@
     </div>
   </footer>
 
-  <!-- Note: Remove this script if it’s not needed on this page -->
-  <script src="script.js"></script>
+  <!-- JavaScript for Fading Overlay Effect -->
+  <script>
+    window.addEventListener('scroll', function() {
+      var overlay = document.querySelector('.banner-overlay');
+      var scrollPosition = window.scrollY;
+      var bannerHeight = document.querySelector('.page-banner').offsetHeight;
+      var opacity = Math.min(0.8, scrollPosition / bannerHeight);
+      overlay.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+  </script>
 </body>
 </html>

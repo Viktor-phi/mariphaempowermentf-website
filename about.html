@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us - Maripha Empowerment Foundation</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-  <!-- Shared Header -->
-  <header class="site-header">
+  <!-- Shared Fixed Header -->
+  <header class="site-header fixed-header">
     <div class="container">
       <a href="index.html" class="logo">
         <img src="MEF.png" alt="MEF Logo" />
@@ -17,21 +17,29 @@
       </a>
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="mission.html">Our Mission</a></li>
-          <li><a href="programs.html">Programs</a></li>
-          <li><a href="board.html">Our Board</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html">HOME</a></li>
+          <li class="dropdown">
+            <a href="#" class="active">ABOUT US</a>
+            <ul class="dropdown-menu">
+              <li><a href="about.html">Our Story</a></li>
+              <li><a href="mission.html">Our Mission</a></li>
+            </ul>
+          </li>
+          <li><a href="programs.html">PROGRAMS</a></li>
+          <li><a href="board.html">OUR BOARD</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
         </ul>
       </nav>
+      <button class="hamburger" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </header>
 
-  <!-- About Content -->
+  <!-- About Content with Grid Layout -->
   <article class="about-content">
     <div class="container">
-      <div class="about-text-image">
+      <div class="about-grid">
         <div class="text">
           <h2>Our Story</h2>
           <p>
@@ -43,20 +51,16 @@
           <p>
             As a Pan-African organization, MEF is deeply rooted in the belief that Africa has the potential to not only feed itself but also to lead the world in sustainable food production. We are committed to preserving and integrating Indigenous knowledge with modern agricultural practices, ensuring that traditional wisdom informs innovative solutions. Through initiatives like Nollywood Eatz, we celebrate Africa’s rich culinary heritage by promoting excellence in farm-to-fork cuisine, bridging the gap between agriculture, culture, and community.
           </p>
+          <p>
+            At MEF, we envision a future where Africa’s communities thrive in harmony with the environment, where food sovereignty is a reality, and where every individual has the opportunity to contribute to a regenerative and equitable food system. Together, we are sowing the seeds of change, cultivating resilience, and building a legacy of sustainability and shared prosperity for generations to come.
+          </p>
+          <p>
+            Our story is one of resilience, innovation, and a deep commitment to empowering women, youth, and rural communities. We recognize that true transformation requires more than just access to resources—it requires mentorship, education, and financial inclusion. That’s why we are dedicated to mentoring the next generation of agro-entrepreneurs, providing them with the skills, confidence, and support they need to succeed. By fostering equitable access to resources and opportunities, we are breaking down barriers and creating pathways for sustainable livelihoods.
+          </p>
         </div>
-        <div class="image">
+        <div class="image" style="margin-top: -20px;">
           <img src="Mari.jpeg" alt="About Maripha Empowerment Foundation" />
         </div>
-      </div>
-      <div class="text">
-        <p>
-          At MEF, we envision a future where Africa’s communities thrive in harmony with the environment, where food sovereignty is a reality, and where every individual has the opportunity to contribute to a regenerative and equitable food system. Together, we are sowing the seeds of change, cultivating resilience, and building a legacy of sustainability and shared prosperity for generations to come.
-        </p>
-      </div>
-      <div class="text">
-        <p>
-          Our story is one of resilience, innovation, and a deep commitment to empowering women, youth, and rural communities. We recognize that true transformation requires more than just access to resources—it requires mentorship, education, and financial inclusion. That’s why we are dedicated to mentoring the next generation of agro-entrepreneurs, providing them with the skills, confidence, and support they need to succeed. By fostering equitable access to resources and opportunities, we are breaking down barriers and creating pathways for sustainable livelihoods.
-        </p>
       </div>
     </div>
   </article>
@@ -64,6 +68,13 @@
   <!-- Shared Footer -->
   <footer>
     <div class="container">
+      <div class="newsletter">
+        <h3>Join Our Newsletter</h3>
+        <form>
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
       <p>© 2025 Maripha Empowerment Foundation. All rights reserved.</p>
       <div class="social-links">
         <a href="https://facebook.com/yourpage" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
@@ -72,8 +83,5 @@
       </div>
     </div>
   </footer>
-
-  <!-- Note: Remove this script if it's not needed on this page -->
-  <script src="script.js"></script>
 </body>
 </html>

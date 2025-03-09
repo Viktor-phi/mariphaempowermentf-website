@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Explore the programs of Maripha Empowerment Foundation, including regenerative agriculture, community development, and collaborative research." />
   <title>Programs - Maripha Empowerment Foundation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-  <!-- Shared Header -->
+  <!-- Shared Header with Dropdown -->
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo">
@@ -18,19 +19,28 @@
       </a>
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="mission.html">Our Mission</a></li>
-          <li><a href="programs.html" class="active">Programs</a></li>
-          <li><a href="board.html">Our Board</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html">HOME</a></li>
+          <li class="dropdown">
+            <a href="#">ABOUT US</a>
+            <ul class="dropdown-menu">
+              <li><a href="about.html">Our Story</a></li>
+              <li><a href="mission.html">Our Mission</a></li>
+            </ul>
+          </li>
+          <li><a href="programs.html" class="active">PROGRAMS</a></li>
+          <li><a href="board.html">OUR BOARD</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
         </ul>
       </nav>
+      <button class="hamburger" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </header>
 
-  <!-- Programs Page Banner -->
+  <!-- Programs Page Banner with Fixed Background and Overlay -->
   <section class="page-banner programs-banner">
+    <div class="banner-overlay"></div>
     <div class="container">
       <h1>Our Programs</h1>
     </div>
@@ -40,35 +50,32 @@
   <section class="programs-content">
     <div class="container">
       <h2>Initiatives That Drive Change</h2>
-      <ul class="program-list">
-        <li class="program-item">
+      <div class="program-list">
+        <div class="program-item">
           <img src="Regenerative Agriculture.jpeg" alt="Regenerative Agriculture Training" />
           <h3>Regenerative Agriculture</h3>
           <p>
             Empowering the next generation through education and training in regenerative agriculture to promote sustainable farming practices.
           </p>
-          <!-- <a href="regenerative-agriculture.html" class="btn">Learn More</a> -->
           <a href="regenerative-agriculture.html" class="btn">Learn More</a>
-        </li>
-        <li class="program-item">
+        </div>
+        <div class="program-item">
           <img src="Community Development.jpg" alt="Community Development" />
           <h3>Community Development</h3>
           <p>
             Working hand-in-hand with local farmers and communities to foster sustainable growth and improve livelihoods.
           </p>
-          <!-- <a href="community-development.html" class="btn">Learn More</a> -->
           <a href="community-development.html" class="btn">Learn More</a>
-        </li>
-        <li class="program-item">
-          <img src="Collaborative Research.jpg" alt="Collabrative Research" />
+        </div>
+        <div class="program-item">
+          <img src="Collaborative Research.jpg" alt="Collaborative Research" />
           <h3>Collaborative Research</h3>
           <p>
             Collaborating with stakeholders to advance indigenous food products through innovative research and development.
           </p>
-          <!-- <a href="collaborative-research.html" class="btn">Learn More</a> -->
           <a href="collaborative-research.html" class="btn">Learn More</a>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -90,7 +97,15 @@
     </div>
   </footer>
 
-  <!-- Only include script.js if it’s needed for this page -->
-  <script src="script.js"></script>
+  <!-- Script for Fading Overlay -->
+  <script>
+    window.addEventListener('scroll', function() {
+      var overlay = document.querySelector('.banner-overlay');
+      var scrollPosition = window.scrollY;
+      var bannerHeight = document.querySelector('.page-banner').offsetHeight;
+      var opacity = Math.min(0.8, scrollPosition / bannerHeight);
+      overlay.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+  </script>
 </body>
 </html>

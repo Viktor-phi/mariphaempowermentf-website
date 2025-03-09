@@ -4,12 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MARIPHA EMPOWERMENT FOUNDATION - Home</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-  <!-- Shared Header -->
+  <!-- Fixed Header with Dropdown Navigation -->
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo">
@@ -18,35 +17,45 @@
       </a>
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="mission.html">Our Mission</a></li>
-          <li><a href="programs.html">Programs</a></li>
-          <li><a href="board.html">Our Board</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html" class="active">HOME</a></li>
+          <li class="dropdown">
+            <a href="#">ABOUT US</a>
+            <ul class="dropdown-menu">
+              <li><a href="about.html">Our Story</a></li>
+              <li><a href="mission.html">Our Mission</a></li>
+              <li><a href="board.html">Our Board</a></li>
+            </ul>
+          </li>
+          <li><a href="programs.html">PROGRAMS</a></li>
+          <li><a href="board.html">OUR BOARD</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
         </ul>
       </nav>
+      <button class="hamburger" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Fixed Background and Fading Overlay -->
   <section id="home" class="hero">
+    <div class="hero-background"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>Empowering Communities, Inspiring Change</h1>
+      <h1 class="uppercase-title">Empowering Communities, Inspiring Change</h1>
       <p>Join us in our journey to make a difference.</p>
       <a href="mission.html" class="btn">Learn More</a>
     </div>
   </section>
 
-  <!-- Overview Section -->
+  <!-- Overview Section with Grid Layout -->
   <section class="overview">
     <div class="container">
       <h2>Welcome to Maripha Empowerment Foundation</h2>
       <p>
         Our mission is to advance food sovereignty, environmental sustainability, and community empowerment through regenerative agriculture, innovation, and the preservation of Indigenous knowledge. We are dedicated to empowering women and youth, fostering rural economic development, and mentoring the next generation of agro-entrepreneurs. By promoting financial inclusion and equitable resource access, we strive to build resilient, thriving communities for a sustainable future.
       </p>
-      <div class="overview-cards">
+      <div class="overview-grid">
         <div class="card">
           <h3>About Us</h3>
           <p>Learn about our history, values, and vision.</p>
@@ -66,82 +75,68 @@
     </div>
   </section>
 
-  <!-- Sliding Panel Section -->
-  <section class="sliding-panel-section">
+  <!-- Impact Stories Section with Carousel -->
+  <section class="impact-stories">
     <div class="container">
       <h2>Impact Stories</h2>
-      <div class="sliding-panel-container">
-        <div class="sliding-panel">
-          <div class="slide">
-            <img src="Regenerative.jpg" alt="Community members participating in regenerative agriculture training" loading="lazy" />
-          </div>
-          <div class="slide">
-            <img src="Community.jpeg" alt="Local farmers collaborating on sustainable farming practices" loading="lazy" />
-          </div>
-          <div class="slide">
-            <img src="collaborative.jpeg" alt="Youth engagement in environmental conservation projects" loading="lazy" />
-          </div>
-          <div class="slide">
-            <img src="Obate1.jpg" alt="Empowering women through agricultural entrepreneurship" loading="lazy" />
-          </div>
-          <div class="slide">
-            <img src="Obate2.jpg" alt="Preserving Indigenous knowledge in farming techniques" loading="lazy" />
-          </div>
-          <div class="slide">
-            <img src="Obate3.jpg" alt="Mentoring young agro-entrepreneurs" loading="lazy" />
-          </div>
-          <div class="slide">
-            <img src="Obate4.jpeg" alt="Promoting financial inclusion in rural communities" loading="lazy" />
-          </div>
-          <div class="slide">
-            <img src="Obate5.jpeg" alt="Building resilient communities through sustainable practices" loading="lazy" />
-          </div>
-          <div class="slide">
-            <img src="Obate7.jpg" alt="Advancing food sovereignty through local initiatives" loading="lazy" />
-          </div>
-          <div class="slide">
-            <img src="Obate8.jpg" alt="Fostering rural economic development" loading="lazy" />
-          </div>
-          <div class="slide">
-            <img src="Obate9.jpg" alt="Mentoring the next generation of agro-entrepreneurs" loading="lazy" />
-          </div>
+      <div class="carousel">
+        <div class="carousel-inner">
+          <div class="slide"><img src="Regenerative.jpg" alt="Impact Story 1" /></div>
+          <div class="slide"><img src="Community.jpeg" alt="Impact Story 2" /></div>
+          <div class="slide"><img src="collaborative.jpeg" alt="Impact Story 3" /></div>
+          <div class="slide"><img src="Obate1.jpg" alt="Impact Story 4"></div>
+          <div class="slide"><img src="Obate2.jpg" alt="Impact Story 5"></div>
+          <div class="slide"><img src="Obate3.jpg" alt="Impact Story 6"></div>
+          <div class="slide"><img src="Obate4.jpeg" alt="Impact Story 7"></div>
+          <div class="slide"><img src="Obate5.jpeg" alt="Impact Story 8"></div>
+          <div class="slide"><img src="Obate7.jpg" alt="Impact Story 9"></div>
+          <div class="slide"><img src="Obate8.jpg" alt="Impact Story 10"></div>
+          <div class="slide"><img src="Obate9.jpg" alt="Impact Story 11"></div>
+          <div class="slide"><img src="Mari with students.jpeg" alt="Impact Story 11"></div>
         </div>
-        <button class="prev" onclick="plusSlides(-1)" aria-label="Previous Slide">❮</button>
-        <button class="next" onclick="plusSlides(1)" aria-label="Next Slide">❯</button>
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
       </div>
     </div>
   </section>
 
-  <!-- Shared Footer -->
+  <!-- Footer with Newsletter Subscription -->
   <footer>
     <div class="container">
+      <div class="newsletter">
+        <h3>Join Our Newsletter</h3>
+        <form>
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
       <p>© 2025 Maripha Empowerment Foundation. All rights reserved.</p>
       <div class="social-links">
-        <a href="https://facebook.com/yourpage" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://twitter.com/yourhandle" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- JavaScript for Carousel and Scroll Effect -->
   <script>
     let slideIndex = 0;
     let slideTimeout;
 
     function showSlides() {
-      const slides = document.querySelector('.sliding-panel');
-      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+      const slides = document.querySelector('.carousel-inner');
+      slides.style.transform = `translateX(-${slideIndex * (100 / 3)}%)`;
       slideIndex++;
       if (slideIndex >= slides.children.length) {
         slideIndex = 0;
       }
-      slideTimeout = setTimeout(showSlides, 2000); // Change image every 2 seconds
+      slideTimeout = setTimeout(showSlides, 3000); // Change image every 3 seconds
     }
 
     function plusSlides(n) {
       clearTimeout(slideTimeout);
-      const slides = document.querySelector('.sliding-panel');
+      const slides = document.querySelector('.carousel-inner');
       slideIndex += n;
       if (slideIndex < 0) {
         slideIndex = slides.children.length - 1;
@@ -149,8 +144,8 @@
       if (slideIndex >= slides.children.length) {
         slideIndex = 0;
       }
-      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-      slideTimeout = setTimeout(showSlides, 2000);
+      slides.style.transform = `translateX(-${slideIndex * (100 / 3)}%)`;
+      slideTimeout = setTimeout(showSlides, 3000);
     }
 
     showSlides();

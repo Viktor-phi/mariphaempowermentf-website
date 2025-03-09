@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Mission - Maripha Empowerment Foundation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-  <!-- Shared Header -->
+  <!-- Shared Header with Dropdown -->
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo">
@@ -17,19 +18,28 @@
       </a>
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="mission.html" class="active">Our Mission</a></li>
-          <li><a href="programs.html">Programs</a></li>
-          <li><a href="board.html">Our Board</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html">HOME</a></li>
+          <li class="dropdown">
+            <a href="#" class="active">ABOUT US</a>
+            <ul class="dropdown-menu">
+              <li><a href="about.html">Our Story</a></li>
+              <li><a href="mission.html">Our Mission</a></li>
+            </ul>
+          </li>
+          <li><a href="programs.html">PROGRAMS</a></li>
+          <li><a href="board.html">OUR BOARD</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
         </ul>
       </nav>
+      <button class="hamburger" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </header>
 
-  <!-- Mission Page Banner -->
+  <!-- Mission Page Banner with Fixed Background and Overlay -->
   <section class="page-banner mission-banner">
+    <div class="banner-overlay"></div>
     <div class="container">
       <h1>Our Mission</h1>
     </div>
@@ -82,7 +92,15 @@
     </div>
   </footer>
 
-  <!-- Note: Remove this script if it's not needed on this page -->
-  <script src="script.js"></script>
+  <!-- Script for Fading Overlay -->
+  <script>
+    window.addEventListener('scroll', function() {
+      var overlay = document.querySelector('.banner-overlay');
+      var scrollPosition = window.scrollY;
+      var bannerHeight = document.querySelector('.page-banner').offsetHeight;
+      var opacity = Math.min(0.8, scrollPosition / bannerHeight);
+      overlay.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+  </script>
 </body>
 </html>

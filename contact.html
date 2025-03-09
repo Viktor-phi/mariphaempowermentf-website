@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact - Maripha Empowerment Foundation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-  <!-- Shared Header -->
+  <!-- Fixed Header with Dropdown Navigation -->
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo">
@@ -17,39 +18,47 @@
       </a>
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="mission.html">Our Mission</a></li>
-          <li><a href="programs.html">Programs</a></li>
-          <li><a href="board.html">Our Board</a></li>
-          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="index.html">HOME</a></li>
+          <li class="dropdown">
+            <a href="#">ABOUT US</a>
+            <ul class="dropdown-menu">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="mission.html">Our Mission</a></li>
+              <li><a href="board.html">Our Board</a></li>
+            </ul>
+          </li>
+          <li><a href="programs.html">PROGRAMS</a></li>
+          <li><a href="board.html">OUR BOARD</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
         </ul>
       </nav>
+      <button class="hamburger" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </header>
 
-  <!-- Contact Page Banner -->
+  <!-- Banner with Fading Overlay -->
   <section class="page-banner contact-banner">
+    <div class="banner-overlay"></div>
     <div class="container">
       <h1>Contact Us</h1>
     </div>
   </section>
 
-  <!-- Contact Content -->
+  <!-- Contact Details Section -->
   <section class="contact-content">
     <div class="container">
       <h2>Get in Touch</h2>
       <div class="contact-details">
-        <address>
-          <p><strong>Email:</strong> <a href="mailto:mariphafarmsphi@gmail.com">mariphafarmsphi@gmail.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+2348092815233">+234 809 281 5233</a></p>
-          <p><strong>Office Address:</strong> Obate Ballah, Off Eiyenkorin Ballah Road, Asa Local Government Area, Ilorin, Kwara State</p>
-        </address>
+        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:mariphafarmsphi@gmail.com">mariphafarmsphi@gmail.com</a></p>
+        <p><i class="fas fa-phone"></i> <strong>Phone:</strong> <a href="tel:+2348092815233">+234 809 281 5233</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> <strong>Office Address:</strong> Obate Ballah, Off Eiyenkorin Ballah Road, Asa Local Government Area, Ilorin, Kwara State</p>
       </div>
     </div>
   </section>
 
-  <!-- Shared Footer -->
+  <!-- Footer -->
   <footer>
     <div class="container">
       <p>© 2025 Maripha Empowerment Foundation. All rights reserved.</p>
@@ -61,7 +70,15 @@
     </div>
   </footer>
 
-  <!-- Note: Remove this script if it's not needed on this page -->
-  <script src="script.js"></script>
+  <!-- JavaScript for Fading Overlay Effect -->
+  <script>
+    window.addEventListener('scroll', function() {
+      var overlay = document.querySelector('.banner-overlay');
+      var scrollPosition = window.scrollY;
+      var bannerHeight = document.querySelector('.page-banner').offsetHeight;
+      var opacity = Math.min(0.8, scrollPosition / bannerHeight);
+      overlay.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+  </script>
 </body>
 </html>
