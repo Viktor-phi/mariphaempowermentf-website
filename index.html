@@ -137,12 +137,23 @@
   <script>
     // Navigation Toggle
     document.addEventListener('DOMContentLoaded', function() {
-      const hamburger = document.querySelector('.hamburger');
-      const nav = document.querySelector('.main-nav');
-      hamburger.addEventListener('click', function() {
-        nav.classList.toggle('active');
-      });
+  const hamburger = document.querySelector('.hamburger');
+  const mainNav = document.querySelector('.main-nav');
+  const dropdowns = document.querySelectorAll('.dropdown');
+
+  // Toggle main navigation
+  hamburger.addEventListener('click', function() {
+    mainNav.classList.toggle('active');
+  });
+
+  // Toggle dropdowns on click (for mobile)
+  dropdowns.forEach(dropdown => {
+    dropdown.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent link navigation if desired
+      this.classList.toggle('active');
     });
+  });
+});
 
     // Carousel
     let slideIndex = 0;

@@ -133,8 +133,8 @@ body {
   background-color: var(--hover-color);
 }
 
-/* Navigation Toggle for Mobile */
-.nav-toggle {
+/* Hamburger Button */
+.hamburger {
   display: none; /* Hidden by default */
   background: none;
   border: none;
@@ -143,7 +143,7 @@ body {
   color: var(--text-color);
 }
 
-.nav-toggle:focus {
+.hamburger:focus {
   outline: 2px solid var(--primary-color);
 }
 
@@ -155,7 +155,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: var(black);
+  color: var(--text-color); /* Fixed typo from var(black) */
   margin-top: 70px; /* Offset for fixed header */
 }
 
@@ -593,30 +593,56 @@ footer .social-links a:hover {
 
 /* Responsive Styling */
 @media (max-width: 768px) {
-  .main-nav ul {
-    flex-direction: column;
-    background-color: var(--bg-white);
+  .hamburger {
+    display: block; /* Show hamburger icon on mobile */
+  }
+
+  .main-nav {
+    display: none; /* Hide navigation by default on mobile */
     position: absolute;
     top: 70px;
     right: 0;
-    width: 200px;
-    display: none;
+    width: 100%; /* Full width for mobile */
+    background-color: var(--bg-white);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 
-  .main-nav ul.active {
-    display: flex;
+  .main-nav.active {
+    display: block; /* Show when 'active' class is added */
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    padding: 10px 0;
   }
 
   .main-nav li {
-    margin: 1rem 0;
+    margin: 10px 0;
+    text-align: center;
   }
 
-  .nav-toggle {
+  .main-nav a {
     display: block;
+    padding: 10px;
+  }
+
+  .main-nav .dropdown-menu {
+    position: static; /* Stack naturally on mobile */
+    box-shadow: none;
+    width: 100%;
+    padding: 0;
+  }
+
+  .main-nav .dropdown:hover .dropdown-menu {
+    display: none; /* Disable hover on mobile */
+  }
+
+  .main-nav .dropdown.active .dropdown-menu {
+    display: block; /* Show dropdown when parent has 'active' class */
   }
 
   .sign-in-btn {
-    display: none;
+    display: none; /* Keep hidden on mobile as per original */
   }
 
   .about-grid {
@@ -635,6 +661,20 @@ footer .social-links a:hover {
 
   .overview {
     margin-top: 2rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .main-nav {
+    display: block; /* Always show navigation on desktop */
+  }
+
+  .hamburger {
+    display: none; /* Hide hamburger on desktop */
+  }
+
+  .main-nav ul {
+    display: flex; /* Horizontal layout */
   }
 }
 
