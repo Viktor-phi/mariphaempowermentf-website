@@ -246,6 +246,14 @@ body {
 }
 
 /* Carousel (Replaces Sliding Panel) */
+
+@media (max-width: 768px) {
+  .carousel img {
+    width: 100%;
+    height: auto;
+  }
+}
+
 .carousel {
   position: relative;
   max-width: 100%;
