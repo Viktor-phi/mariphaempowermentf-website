@@ -92,7 +92,7 @@
           <div class="slide"><img src="Obate7.jpg" alt="Impact Story 9"></div>
           <div class="slide"><img src="Obate8.jpg" alt="Impact Story 10"></div>
           <div class="slide"><img src="Obate9.jpg" alt="Impact Story 11"></div>
-          <div class="slide"><img src="Mari with students.jpeg" alt="Impact Story 11"></div>
+          <div class="slide"><img src="Mari with students.jpeg" alt="Impact Story 12"></div>
         </div>
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
@@ -119,19 +119,34 @@
     </div>
   </footer>
 
-  <!-- JavaScript for Carousel and Scroll Effect -->
+  <!-- JavaScript for Navigation Toggle and Carousel -->
   <script>
+    // Navigation Toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.querySelector('.hamburger');
+      const nav = document.querySelector('.main-nav');
+      hamburger.addEventListener('click', function() {
+        nav.classList.toggle('active');
+      });
+    });
+
+    // Carousel
     let slideIndex = 0;
     let slideTimeout;
 
+    function getSlideWidth() {
+      return window.innerWidth > 768 ? 100 / 3 : 100;
+    }
+
     function showSlides() {
       const slides = document.querySelector('.carousel-inner');
-      slides.style.transform = `translateX(-${slideIndex * (100 / 3)}%)`;
+      const slideWidth = getSlideWidth();
+      slides.style.transform = `translateX(-${slideIndex * slideWidth}%)`;
       slideIndex++;
       if (slideIndex >= slides.children.length) {
         slideIndex = 0;
       }
-      slideTimeout = setTimeout(showSlides, 3000); // Change image every 3 seconds
+      slideTimeout = setTimeout(showSlides, 3000);
     }
 
     function plusSlides(n) {
@@ -144,7 +159,8 @@
       if (slideIndex >= slides.children.length) {
         slideIndex = 0;
       }
-      slides.style.transform = `translateX(-${slideIndex * (100 / 3)}%)`;
+      const slideWidth = getSlideWidth();
+      slides.style.transform = `translateX(-${slideIndex * slideWidth}%)`;
       slideTimeout = setTimeout(showSlides, 3000);
     }
 
