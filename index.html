@@ -29,21 +29,28 @@
         <img src="MEF.png" alt="MEF Logo" />
         MARIPHA EMPOWERMENT FOUNDATION
       </a>
+
+  <!-- Hamburger button should come after logo but before nav -->
+  <button class="hamburger" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Navigation menu comes last in the container -->
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html" class="active">HOME</a></li>
-          <li><a href="about.html">ABOUT US</a></li>
+          <li><a href="index.html">HOME</a></li>
+          <li class="dropdown">
+            <a href="#" class="active">ABOUT US</a>
           <ul class="dropdown-menu">
-            <li><a href="mission.html">Our Mission</a></li>
+            <li><a href="about.html">Our Story</a></li>
+          <li><a href="mission.html">Our Mission</a></li>
           </ul>
+          </li>
           <li><a href="programs.html">PROGRAMS</a></li>
           <li><a href="board.html">OUR BOARD</a></li>
           <li><a href="contact.html">CONTACT</a></li>
         </ul>
       </nav>
-      <button class="hamburger" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
     </div>
   </header>
 

@@ -135,53 +135,50 @@ body {
   background-color: var(--hover-color);
 }
 
-/* Ensure hamburger menu toggles navigation on mobile */
+/* Improved Hamburger Menu Implementation */
 .hamburger {
-  display: block; /* Show hamburger icon on mobile */
+  display: none; /* Hidden by default */
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
   color: var(--text-color);
+  z-index: 1001; /* Ensure it stays above other elements */
+  padding: 10px;
 }
 
 .hamburger:focus {
   outline: 2px solid var(--primary-color);
 }
 
-.hamburger.active + .main-nav {
-  display: block; /* Show navigation when hamburger is active */
+/* Fixed mobile menu activation */
+.main-nav.active {
+  display: block !important; /* Force show menu */
 }
 
-/* Ensure dropdown menu works on mobile */
+/* Enhanced dropdown handling */
 .main-nav .dropdown.active .dropdown-menu {
-  display: block; /* Show dropdown when parent has 'active' class */
-}
-
-/* Ensure dropdown menu works on desktop */
-@media (min-width: 769px) {
-  .main-nav .dropdown:hover .dropdown-menu {
-    display: block; /* Show dropdown on hover for desktop */
-  }
+  display: block;
+  background-color: var(--bg-light);
+  padding-left: 20px; /* Indent dropdown items */
 }
 
 @media (max-width: 768px) {
   .hamburger {
-    display: block; /* Show hamburger icon on mobile */
+    display: block; /* Show on mobile */
+    order: 2; /* Position after logo in flex container */
   }
 
   .main-nav {
-    display: none; /* Hide navigation by default on mobile */
-    position: absolute;
+    display: none;
+    position: fixed; /* Changed from absolute for full coverage */
     top: 70px;
+    left: 0;
     right: 0;
-    width: 100%;
     background-color: var(--bg-white);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-
-  .main-nav.active {
-    display: block; /* Show when 'active' class is added */
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
   }
 
   .main-nav ul {
@@ -190,64 +187,56 @@ body {
   }
 
   .main-nav li {
-    margin: 10px 0;
-    text-align: center;
+    margin: 0;
+    position: relative;
   }
 
   .main-nav a {
     display: block;
-    padding: 10px;
+    padding: 15px 20px;
+    text-align: left; /* Better mobile alignment */
   }
 
   .main-nav .dropdown-menu {
     position: static;
-    box-shadow: none;
     width: 100%;
+    box-shadow: none;
     padding: 0;
+    animation: none !important;
   }
 
-  .main-nav .dropdown:hover .dropdown-menu {
-    display: none; /* Disable hover on mobile */
+  /* Dropdown indicator */
+  .dropdown > a::after {
+    content: "▾";
+    float: right;
+    transition: transform 0.3s ease;
   }
 
-  .main-nav .dropdown.active .dropdown-menu {
-    display: block; /* Show dropdown when parent has 'active' class */
-  }
-
-  .sign-in-btn {
-    display: none; /* Keep hidden on mobile */
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .mission-values,
-  .program-list,
-  .board-list {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-details {
-    text-align: left;
-  }
-
-  .overview {
-    margin-top: 2rem;
+  .dropdown.active > a::after {
+    transform: rotate(180deg);
   }
 }
 
 @media (min-width: 769px) {
-  .main-nav {
-    display: block; /* Always show navigation on desktop */
+  /* Enhanced desktop dropdown */
+  .main-nav .dropdown:hover .dropdown-menu {
+    display: block;
+    animation: dropdownFade 0.3s ease forwards;
+  }
+
+  @keyframes dropdownFade {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .hamburger {
-    display: none; /* Hide hamburger on desktop */
-  }
-
-  .main-nav ul {
-    display: flex; /* Horizontal layout */
+    display: none; /* Ensure hidden on desktop */
   }
 }
 
