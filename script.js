@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const nav = document.querySelector('.main-nav');
   const dropdowns = document.querySelectorAll('.dropdown');
 
+  hamburger.addEventListener('click', function() {
+    mainNav.classList.toggle('active');
+  });
+
   // Toggle navigation menu
   hamburger.addEventListener('click', function(e) {
     e.stopPropagation();
