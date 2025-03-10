@@ -161,6 +161,11 @@ body {
   display: block !important; /* Force show menu */
 }
 
+/* Ensure hamburger menu is functional from any navigation option */
+.hamburger.active + .main-nav {
+  display: block !important;
+}
+
 /* Enhanced dropdown handling */
 .main-nav .dropdown.active .dropdown-menu {
   display: block;
