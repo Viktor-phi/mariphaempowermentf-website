@@ -136,63 +136,6 @@
     </div>
   </footer>
 
-  <!-- JavaScript for Navigation Toggle and Carousel -->
-  <script>
-    // Navigation Toggle
-    document.addEventListener('DOMContentLoaded', function() {
-  const hamburger = document.querySelector('.hamburger');
-  const mainNav = document.querySelector('.main-nav');
-  const dropdowns = document.querySelectorAll('.dropdown');
-
-  // Toggle main navigation
-  hamburger.addEventListener('click', function() {
-    mainNav.classList.toggle('active');
-  });
-
-  // Toggle dropdowns on click (for mobile)
-  dropdowns.forEach(dropdown => {
-    dropdown.addEventListener('click', function(e) {
-      e.preventDefault(); // Prevent link navigation if desired
-      this.classList.toggle('active');
-    });
-  });
-});
-
-    // Carousel
-    let slideIndex = 0;
-    let slideTimeout;
-
-    function getSlideWidth() {
-      return window.innerWidth > 768 ? 100 / 3 : 100;
-    }
-
-    function showSlides() {
-      const slides = document.querySelector('.carousel-inner');
-      const slideWidth = getSlideWidth();
-      slides.style.transform = `translateX(-${slideIndex * slideWidth}%)`;
-      slideIndex++;
-      if (slideIndex >= slides.children.length) {
-        slideIndex = 0;
-      }
-      slideTimeout = setTimeout(showSlides, 3000);
-    }
-
-    function plusSlides(n) {
-      clearTimeout(slideTimeout);
-      const slides = document.querySelector('.carousel-inner');
-      slideIndex += n;
-      if (slideIndex < 0) {
-        slideIndex = slides.children.length - 1;
-      }
-      if (slideIndex >= slides.children.length) {
-        slideIndex = 0;
-      }
-      const slideWidth = getSlideWidth();
-      slides.style.transform = `translateX(-${slideIndex * slideWidth}%)`;
-      slideTimeout = setTimeout(showSlides, 3000);
-    }
-
-    showSlides();
-  </script>
+  <script src="js/scripts.js"></script>
 </body>
 </html>

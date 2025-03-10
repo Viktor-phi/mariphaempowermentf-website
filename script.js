@@ -3,11 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const nav = document.querySelector('.main-nav');
   const dropdowns = document.querySelectorAll('.dropdown');
 
-  hamburger.addEventListener('click', function() {
-    mainNav.classList.toggle('active');
-  });
-
-  // Toggle navigation menu
+  // Toggle navigation menu (single, correct event listener)
   hamburger.addEventListener('click', function(e) {
     e.stopPropagation();
     this.classList.toggle('active');
@@ -34,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Close menus when clicking outside
   document.addEventListener('click', function(e) {
     if (window.innerWidth <= 768) {
-      if (!nav.contains(e.target)) {  // Fixed syntax error here
+      if (!nav.contains(e.target)) {
         hamburger.classList.remove('active');
         nav.classList.remove('active');
         dropdowns.forEach(d => d.classList.remove('active'));
