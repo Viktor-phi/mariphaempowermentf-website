@@ -278,7 +278,8 @@ body {
     width: 100%; /* 1 slide visible */
   }
   .carousel-inner img {
-    height: 50vh; /* Responsive height based on viewport */
+    height: auto; /* Adjust height to auto for normal view */
+    max-height: 50vh; /* Ensure it doesn't exceed viewport height */
     min-height: 250px; /* Prevent becoming too small */
   }
 
