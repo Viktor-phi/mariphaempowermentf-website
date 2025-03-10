@@ -81,6 +81,11 @@ body {
   color: var(--primary-color);
 }
 
+/* Ensure 'About Us' link is not blue by default */
+.main-nav .dropdown > a {
+  color: var(--text-color);
+}
+
 /* Dropdown Menu for 'About Us' */
 .main-nav .dropdown {
   position: relative;
