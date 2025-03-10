@@ -274,6 +274,9 @@ body {
 
 /* Mobile-specific adjustments */
 @media (max-width: 768px) {
+  .slide {
+    width: 100%; /* 1 slide visible */
+  }
   .carousel-inner img {
     height: 50vh; /* Responsive height based on viewport */
     min-height: 250px; /* Prevent becoming too small */
