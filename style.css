@@ -262,6 +262,7 @@ body {
 
 .slide {
   flex: 0 0 auto;
+  position: relative; /* Added for aspect ratio */
 }
 
 /* Desktop: Show 3 slides */
@@ -271,11 +272,20 @@ body {
   }
 }
 
-/* Mobile: Show 1 slide */
+/* Mobile-specific adjustments */
 @media (max-width: 768px) {
-  .slide {
-    width: 100%; /* 1 slide visible */
+  .carousel-inner img {
+    height: 50vh; /* Responsive height based on viewport */
+    min-height: 250px; /* Prevent becoming too small */
   }
+
+/* Optional: Add aspect-ratio fallback */
+@supports (aspect-ratio: 16/9) {
+  .carousel-inner img {
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+}
 }
 
 .carousel-inner img {
