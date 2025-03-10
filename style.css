@@ -135,9 +135,9 @@ body {
   background-color: var(--hover-color);
 }
 
-/* Hamburger Button */
+/* Ensure hamburger menu toggles navigation on mobile */
 .hamburger {
-  display: none; /* Hidden by default */
+  display: block; /* Show hamburger icon on mobile */
   background: none;
   border: none;
   font-size: 1.5rem;
@@ -147,6 +147,108 @@ body {
 
 .hamburger:focus {
   outline: 2px solid var(--primary-color);
+}
+
+.hamburger.active + .main-nav {
+  display: block; /* Show navigation when hamburger is active */
+}
+
+/* Ensure dropdown menu works on mobile */
+.main-nav .dropdown.active .dropdown-menu {
+  display: block; /* Show dropdown when parent has 'active' class */
+}
+
+/* Ensure dropdown menu works on desktop */
+@media (min-width: 769px) {
+  .main-nav .dropdown:hover .dropdown-menu {
+    display: block; /* Show dropdown on hover for desktop */
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* Show hamburger icon on mobile */
+  }
+
+  .main-nav {
+    display: none; /* Hide navigation by default on mobile */
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    background-color: var(--bg-white);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-nav.active {
+    display: block; /* Show when 'active' class is added */
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  .main-nav li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 10px;
+  }
+
+  .main-nav .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    width: 100%;
+    padding: 0;
+  }
+
+  .main-nav .dropdown:hover .dropdown-menu {
+    display: none; /* Disable hover on mobile */
+  }
+
+  .main-nav .dropdown.active .dropdown-menu {
+    display: block; /* Show dropdown when parent has 'active' class */
+  }
+
+  .sign-in-btn {
+    display: none; /* Keep hidden on mobile */
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-values,
+  .program-list,
+  .board-list {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-details {
+    text-align: left;
+  }
+
+  .overview {
+    margin-top: 2rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .main-nav {
+    display: block; /* Always show navigation on desktop */
+  }
+
+  .hamburger {
+    display: none; /* Hide hamburger on desktop */
+  }
+
+  .main-nav ul {
+    display: flex; /* Horizontal layout */
+  }
 }
 
 /* Hero Section */
