@@ -98,8 +98,10 @@ body {
   min-width: 150px;
 }
 
-.main-nav .dropdown:hover .dropdown-menu {
-  display: block;
+@media (min-width: 769px) {
+  .main-nav .dropdown:hover .dropdown-menu {
+    display: block; /* Show dropdown on hover for desktop */
+  }
 }
 
 .main-nav .dropdown-menu li {
@@ -155,7 +157,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: var(--text-color); /* Fixed typo from var(black) */
+  color: var(--text-color);
   margin-top: 70px; /* Offset for fixed header */
 }
 
@@ -245,15 +247,7 @@ body {
   text-align: center;
 }
 
-/* Carousel (Replaces Sliding Panel) */
-
-@media (max-width: 768px) {
-  .carousel img {
-    width: 100%;
-    height: auto;
-  }
-}
-
+/* Carousel */
 .carousel {
   position: relative;
   max-width: 100%;
@@ -264,20 +258,31 @@ body {
 .carousel-inner {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  gap: 1in; /* Add spacing between slides */
 }
 
-.carousel-inner .slide {
+.slide {
   flex: 0 0 auto;
-  width: calc(100% / 3 - 1in); /* Adjust width to fit 3 slides with spacing */
-  box-sizing: border-box;
+}
+
+/* Desktop: Show 3 slides */
+@media (min-width: 769px) {
+  .slide {
+    width: 33.33%; /* 3 slides visible */
+  }
+}
+
+/* Mobile: Show 1 slide */
+@media (max-width: 768px) {
+  .slide {
+    width: 100%; /* 1 slide visible */
+  }
 }
 
 .carousel-inner img {
   width: 100%;
-  height: 300px; /* Set a fixed height for all images */
-  object-fit: cover; /* Ensure the image covers the area without distortion */
-  border-radius: 5px; /* Optional: Add rounded corners */
+  height: 300px; /* Fixed height for consistency */
+  object-fit: cover; /* Maintain aspect ratio */
+  border-radius: 5px;
 }
 
 .prev,
@@ -493,7 +498,7 @@ body {
 }
 
 .board-member .social-links a:hover {
-  opacity: 0;
+  opacity: 0.7; /* Fixed from 0 to maintain visibility */
 }
 
 /* Contact Content */
@@ -610,7 +615,7 @@ footer .social-links a:hover {
     position: absolute;
     top: 70px;
     right: 0;
-    width: 100%; /* Full width for mobile */
+    width: 100%;
     background-color: var(--bg-white);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
@@ -635,7 +640,7 @@ footer .social-links a:hover {
   }
 
   .main-nav .dropdown-menu {
-    position: static; /* Stack naturally on mobile */
+    position: static;
     box-shadow: none;
     width: 100%;
     padding: 0;
@@ -650,7 +655,7 @@ footer .social-links a:hover {
   }
 
   .sign-in-btn {
-    display: none; /* Keep hidden on mobile as per original */
+    display: none; /* Keep hidden on mobile */
   }
 
   .about-grid {

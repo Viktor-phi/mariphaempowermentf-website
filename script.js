@@ -1,49 +1,37 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // Mobile Navigation
-  const navLinks = document.querySelector('.main-nav ul');
-  const navbarContainer = document.querySelector('.site-header .container');
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('.main-nav');
+  const dropdowns = document.querySelectorAll('.dropdown');
 
-  if (!navLinks || !navbarContainer) {
-    console.error('Navigation elements not found.');
-    return;
-  }
+  // Toggle navigation menu on hamburger click
+  hamburger.addEventListener('click', function() {
+    nav.classList.toggle('active');
+  });
 
-  // Create and append toggle button
-  const navToggle = document.createElement('button');
-  navToggle.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
-  navToggle.classList.add('nav-toggle');
-  navToggle.setAttribute('aria-label', 'Toggle navigation menu');
-  navToggle.setAttribute('aria-expanded', 'false');
-  navbarContainer.appendChild(navToggle);
-
-  // Toggle menu on button click
-  navToggle.addEventListener('click', function () {
-    const isExpanded = navLinks.classList.toggle('active');
-    navToggle.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
-    const icon = navToggle.querySelector('i');
-    icon.classList.replace(isExpanded ? 'fa-bars' : 'fa-times', isExpanded ? 'fa-times' : 'fa-bars');
+  // Toggle dropdown menu on click for mobile
+  dropdowns.forEach(dropdown => {
+    dropdown.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault(); // Prevent navigation on mobile
+        this.classList.toggle('active');
+      }
+    });
   });
 
   // Close menu when a navigation link is clicked
   const navItems = document.querySelectorAll('.main-nav a');
   navItems.forEach(item => {
     item.addEventListener('click', () => {
-      if (navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
-        const icon = navToggle.querySelector('i');
-        icon.classList.replace('fa-times', 'fa-bars');
+      if (nav.classList.contains('active')) {
+        nav.classList.remove('active');
       }
     });
   });
 
   // Close menu on Escape key press
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && navLinks.classList.contains('active')) {
-      navLinks.classList.remove('active');
-      navToggle.setAttribute('aria-expanded', 'false');
-      const icon = navToggle.querySelector('i');
-      icon.classList.replace('fa-times', 'fa-bars');
+    if (event.key === 'Escape' && nav.classList.contains('active')) {
+      nav.classList.remove('active');
     }
   });
 
@@ -51,15 +39,21 @@ document.addEventListener('DOMContentLoaded', function () {
   const carousel = document.querySelector('.carousel');
   if (carousel) {
     const carouselInner = carousel.querySelector('.carousel-inner');
-    const slides = carouselInner.querySelectorAll('img');
+    const slides = carouselInner.querySelectorAll('.slide');
     const prevBtn = carousel.querySelector('.prev');
     const nextBtn = carousel.querySelector('.next');
     let currentIndex = 0;
 
+    function getSlideWidth() {
+      return window.innerWidth > 768 ? 100 / 3 : 100; // 33.33% on desktop, 100% on mobile
+    }
+
     function showSlide(index) {
-      if (index >= slides.length) index = 0;
-      if (index < 0) index = slides.length - 1;
-      carouselInner.style.transform = `translateX(-${index * 100}%)`;
+      const totalSlides = slides.length;
+      if (index >= totalSlides) index = 0;
+      if (index < 0) index = totalSlides - 1;
+      const slideWidth = getSlideWidth();
+      carouselInner.style.transform = `translateX(-${index * slideWidth}%)`;
       currentIndex = index;
     }
 
