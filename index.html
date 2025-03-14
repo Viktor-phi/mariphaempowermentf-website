@@ -6,6 +6,8 @@
   <title>MARIPHA EMPOWERMENT FOUNDATION - Home</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Include AOS for animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     /* Add this CSS to handle the mobile navigation toggle */
     .main-nav.active {
@@ -19,42 +21,47 @@
         display: flex;
       }
     }
+    /* Add this CSS to handle the carousel display */
+    .carousel {
+    position: relative;
+    overflow: hidden; /* Ensures only the visible area shows */
+    }
+
+    .carousel-inner {
+    display: flex;
+    white-space: nowrap; /* Keeps slides in a single row */
+    }
+
+    .carousel-inner .slide {
+    width: 33.33%; /* Shows three slides at a time within the carousel */
+    }
   </style>
 </head>
 <body>
-  <!-- Fixed Header with Dropdown Navigation -->
+  <!-- Fixed Header with Navigation and Donate Button -->
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo">
         <img src="MEF.png" alt="MEF Logo" />
         MARIPHA EMPOWERMENT FOUNDATION
       </a>
-
-  <!-- Hamburger button should come after logo but before nav -->
-  <button class="hamburger" aria-label="Toggle navigation">
-    <i class="fas fa-bars"></i>
-  </button>
-
-  <!-- Navigation menu comes last in the container -->
+      <button class="hamburger" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li class="dropdown">
-            <a href="#" class="active">ABOUT US</a>
-          <ul class="dropdown-menu">
-            <li><a href="about.html">Our Story</a></li>
-          <li><a href="mission.html">Our Mission</a></li>
-          </ul>
-          </li>
-          <li><a href="programs.html">PROGRAMS</a></li>
-          <li><a href="board.html">OUR BOARD</a></li>
-          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="mission.html">Mission</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="board.html">Board</a></li>
+          <li><a href="donate.html" class="btn">Donate</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section with Fixed Background and Fading Overlay -->
+  <!-- Hero Section (Unchanged) -->
   <section id="home" class="hero">
     <div class="hero-background"></div>
     <div class="hero-overlay"></div>
@@ -65,34 +72,115 @@
     </div>
   </section>
 
-  <!-- Overview Section with Grid Layout -->
+  <!-- Updated Overview Section to Match Agroecology Fund -->
   <section class="overview">
     <div class="container">
-      <h2>Welcome to Maripha Empowerment Foundation</h2>
-      <p>
-        Our mission is to advance food sovereignty, environmental sustainability, and community empowerment through regenerative agriculture, innovation, and the preservation of Indigenous knowledge. We are dedicated to empowering women and youth, fostering rural economic development, and mentoring the next generation of agro-entrepreneurs. By promoting financial inclusion and equitable resource access, we strive to build resilient, thriving communities for a sustainable future.
-      </p>
-      <div class="overview-grid">
-        <div class="card">
-          <h3>About Us</h3>
-          <p>Learn about our history, values, and vision.</p>
-          <a href="about.html" class="btn">Read More</a>
+      <!-- Introductory Section: Mission Statement with Photo -->
+      <div class="intro-section" data-aos="fade-up">
+        <div class="intro-text">
+          <h2>Welcome to Maripha Empowerment Foundation</h2>
+          <p>
+            Our mission is to advance food sovereignty, environmental sustainability, and community empowerment through regenerative agriculture, innovation, and the preservation of Indigenous knowledge. We are dedicated to empowering women and youth, fostering rural economic development, and mentoring the next generation of agro-entrepreneurs. By promoting financial inclusion and equitable resource access, we strive to build resilient, thriving communities for a sustainable future.
+          </p>
+          <a href="mission.html" class="read-more">Learn More</a>
         </div>
-        <div class="card">
-          <h3>Our Programs</h3>
-          <p>Explore our initiatives in agriculture, research, and community development.</p>
-          <a href="programs.html" class="btn">Explore</a>
+        <div class="intro-image">
+          <img src="Regenerative.jpg" alt="Community Empowerment" />
         </div>
-        <div class="card">
-          <h3>Our Board</h3>
-          <p>Meet the leaders guiding our journey.</p>
-          <a href="board.html" class="btn">Meet Them</a>
+      </div>
+
+      <!-- Updated Overview Section to Match Agroecology Fund -->
+  <section class="overview">
+    <div class="container">
+      <!-- Introductory Section: Mission Statement with Photo -->
+      <div class="intro-section" data-aos="fade-up">
+        <div class="intro-image">
+          <img src="Collaborative Research.jpg" alt="Community Empowerment" />
+        </div>
+        <div class="intro-text">
+          <h2>Maripha Empowerment Fondation Partners with UNILORIN</h2>
+          <p>
+            The Maripha Empowerment Foundation and the University of Ilorin (UNILORIN) have partnered to drive community development and empowerment through education and skill-building. Combining UNILORIN’s academic expertise with Maripha’s social impact focus, they address poverty, youth empowerment, and sustainability. Initiatives include workshops, mentorship, and outreach programs, aiming to transform lives and foster inclusive growth. This collaboration sets a benchmark for impactful university-community partnerships.
+          </p>
+          <a href="#" class="read-more">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Updated Overview Section to Match Agroecology Fund -->
+  <section class="overview">
+    <div class="container">
+      <!-- Introductory Section: Mission Statement with Photo -->
+      <div class="intro-section" data-aos="fade-up">
+        <div class="intro-text">
+          <h2>Maripha Farms School Tour - Empowering the Next Generation</h2>
+          <p>
+            Maripha Farms School Tour is an inspiring initiative designed to empower the next generation through hands-on agricultural education. By immersing students in sustainable farming practices, the program fosters environmental awareness, innovation, and a deeper connection to nature. Through interactive tours, students gain valuable insights into agroecology, food systems, and the importance of sustainability, equipping them to become future leaders in creating a greener, more resilient world.
+          </p>
+          <a href="#" class="read-more">Learn More</a>
+        </div>
+        <div class="intro-image">
+          <img src="Mari with students.jpeg" alt="Community Empowerment" />
+        </div>
+      </div>
+
+      <!-- Highlighted Section (Brown Background) -->
+      <div class="highlighted-section" data-aos="fade-up">
+        <h3>Transforming Food Systems</h3>
+        <p>Discover how we’re fostering sustainable agriculture and community resilience through innovative practices.</p>
+        <a href="programs.html" class="read-more">Explore Our Approach</a>
+      </div>
+
+      <!-- Influence Section with Stats -->
+      <div class="influence-section" data-aos="fade-up">
+        <h2>Our Influence</h2>
+        <div class="stats-grid">
+          <div class="stat">
+            <span class="number" data-target="50">$50</span>
+            <p>MILLION+ GRANTED BETWEEN 2012-2024</p>
+          </div>
+          <div class="stat">
+            <span class="number" data-target="500">500</span>
+            <p>GRANTS AWARDED</p>
+          </div>
+          <div class="stat">
+            <span class="number" data-target="40">40+</span>
+            <p>ACTIVE FUNDERS</p>
+          </div>
+          <div class="stat">
+            <span class="number" data-target="80">80</span>
+            <p>COUNTRIES WHERE OUR PARTNERS OPERATE</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stories Section -->
+      <div class="stories-section" data-aos="fade-up">
+        <h2>Empowerment Stories</h2>
+        <div class="stories-grid">
+          <div class="story-card">
+            <img src="Community.jpeg" alt="Story 1" />
+            <h3>Building Resilient Communities</h3>
+            <p>Learn how regenerative agriculture is transforming rural economies.</p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+          <div class="story-card">
+            <img src="Obate1.jpg" alt="Story 2" />
+            <h3>Empowering Women Farmers</h3>
+            <p>Stories of women leading change in agroecology.</p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+          <div class="story-card">
+            <img src="Obate2.jpg" alt="Story 3" />
+            <h3>Youth in Agro-Entrepreneurship</h3>
+            <p>Mentoring the next generation of sustainable farmers.</p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Impact Stories Section with Carousel -->
+  <!-- Impact Stories Section with Carousel (Unchanged) -->
   <section class="impact-stories">
     <div class="container">
       <h2>Impact Stories</h2>
@@ -110,14 +198,11 @@
           <div class="slide"><img src="Obate8.jpg" alt="Impact Story 10"></div>
           <div class="slide"><img src="Obate9.jpg" alt="Impact Story 11"></div>
           <div class="slide"><img src="Mari with students.jpeg" alt="Impact Story 12"></div>
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer with Newsletter Subscription -->
+  <!-- Footer (Unchanged) -->
   <footer>
     <div class="container">
       <div class="newsletter">
@@ -126,6 +211,12 @@
           <input type="email" placeholder="Enter your email" required />
           <button type="submit">Subscribe</button>
         </form>
+      </div>
+      <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p>Address: 123 Main St, City, Country</p>
+        <p>Phone: +123 456 7890</p>
+        <p>Email: info@maripha.org</p>
       </div>
       <p>© 2025 Maripha Empowerment Foundation. All rights reserved.</p>
       <div class="social-links">
@@ -136,65 +227,70 @@
     </div>
   </footer>
 
+  <!-- Include AOS and CountUp.js -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.8/countUp.min.js"></script>
   <script src="js/scripts.js"></script>
 
-  <!-- JavaScript for Navigation Toggle and Carousel -->
+  <!-- Inline JavaScript (Updated to Remove Redundant Code) -->
   <script>
-    // Navigation Toggle
-    document.addEventListener('DOMContentLoaded', function() {
-  const hamburger = document.querySelector('.hamburger');
-  const mainNav = document.querySelector('.main-nav');
-  const dropdowns = document.querySelectorAll('.dropdown');
-
-  // Toggle main navigation
-  hamburger.addEventListener('click', function() {
-    mainNav.classList.toggle('active');
-  });
-
-  // Toggle dropdowns on click (for mobile)
-  dropdowns.forEach(dropdown => {
-    dropdown.addEventListener('click', function(e) {
-      e.preventDefault(); // Prevent link navigation if desired
-      this.classList.toggle('active');
+    // Initialize AOS for animations
+    AOS.init({
+      duration: 1000,
+      once: true
     });
+
+    // CountUp.js for number animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const numbers = document.querySelectorAll('.number');
+      const observerOptions = {
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const number = entry.target;
+            const target = parseInt(number.getAttribute('data-target'));
+            const countUp = new CountUp(number, 0, target, 0, 2.5);
+            if (!countUp.error) {
+              countUp.start();
+            }
+            observer.unobserve(number);
+          }
+        });
+      }, observerOptions);
+
+      numbers.forEach(number => observer.observe(number));
+    });
+
+    // Continuous sliding for the carousel
+  document.addEventListener('DOMContentLoaded', function() {
+    const carouselInner = document.querySelector('.carousel-inner');
+    const originalSlides = carouselInner.querySelectorAll('.slide');
+    
+    // Duplicate the slides for seamless looping
+    originalSlides.forEach(slide => {
+      const clone = slide.cloneNode(true);
+      carouselInner.appendChild(clone);
+    });
+    
+    let position = 0;
+    const speed = 0.1; // Adjust this value to control sliding speed (e.g., 0.05 for slower, 0.2 for faster)
+    const slideWidth = 33.33; // Each slide’s width as a percentage
+    const totalOriginalWidth = originalSlides.length * slideWidth; // 12 * 33.33 = 399.96 ≈ 400%
+    
+    function slide() {
+      position -= speed;
+      if (position <= -totalOriginalWidth) {
+        position += totalOriginalWidth; // Reset to start for seamless loop
+      }
+      carouselInner.style.transform = `translateX(${position}%)`;
+      requestAnimationFrame(slide);
+    }
+    
+    slide(); // Start the continuous sliding
   });
-});
-
-    // Carousel
-    let slideIndex = 0;
-    let slideTimeout;
-
-    function getSlideWidth() {
-      return window.innerWidth > 768 ? 100 / 3 : 100;
-    }
-
-    function showSlides() {
-      const slides = document.querySelector('.carousel-inner');
-      const slideWidth = getSlideWidth();
-      slides.style.transform = `translateX(-${slideIndex * slideWidth}%)`;
-      slideIndex++;
-      if (slideIndex >= slides.children.length) {
-        slideIndex = 0;
-      }
-      slideTimeout = setTimeout(showSlides, 3000);
-    }
-
-    function plusSlides(n) {
-      clearTimeout(slideTimeout);
-      const slides = document.querySelector('.carousel-inner');
-      slideIndex += n;
-      if (slideIndex < 0) {
-        slideIndex = slides.children.length - 1;
-      }
-      if (slideIndex >= slides.children.length) {
-        slideIndex = 0;
-      }
-      const slideWidth = getSlideWidth();
-      slides.style.transform = `translateX(-${slideIndex * slideWidth}%)`;
-      slideTimeout = setTimeout(showSlides, 3000);
-    }
-
-    showSlides();
   </script>
 </body>
 </html>

@@ -1,44 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Hamburger menu toggle
   const hamburger = document.querySelector('.hamburger');
   const nav = document.querySelector('.main-nav');
-  const dropdowns = document.querySelectorAll('.dropdown');
 
-  // Toggle navigation menu (single, correct event listener)
   hamburger.addEventListener('click', function(e) {
     e.stopPropagation();
     this.classList.toggle('active');
     nav.classList.toggle('active');
   });
 
-  // Handle dropdown menus
-  dropdowns.forEach(dropdown => {
-    const link = dropdown.querySelector('a');
-    
-    link.addEventListener('click', function(e) {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        dropdown.classList.toggle('active');
-        
-        // Close other dropdowns
-        dropdowns.forEach(other => {
-          if (other !== dropdown) other.classList.remove('active');
-        });
-      }
-    });
-  });
-
-  // Close menus when clicking outside
-  document.addEventListener('click', function(e) {
-    if (window.innerWidth <= 768) {
-      if (!nav.contains(e.target)) {
-        hamburger.classList.remove('active');
-        nav.classList.remove('active');
-        dropdowns.forEach(d => d.classList.remove('active'));
-      }
-    }
-  });
-
-  // Close menu on navigation or Escape key
+  // Close menu on navigation link click or Escape key
   document.querySelectorAll('.main-nav a').forEach(link => {
     link.addEventListener('click', () => {
       if (window.innerWidth <= 768) {
@@ -52,11 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (event.key === 'Escape' && nav.classList.contains('active')) {
       hamburger.classList.remove('active');
       nav.classList.remove('active');
-      dropdowns.forEach(d => d.classList.remove('active'));
     }
   });
 
-  // Carousel Functionality (unchanged)
+  // Carousel functionality
   const carousel = document.querySelector('.carousel');
   if (carousel) {
     const carouselInner = carousel.querySelector('.carousel-inner');
@@ -78,18 +48,24 @@ document.addEventListener('DOMContentLoaded', function() {
       currentIndex = index;
     }
 
+    // Manual controls
     prevBtn?.addEventListener('click', () => showSlide(currentIndex - 1));
     nextBtn?.addEventListener('click', () => showSlide(currentIndex + 1));
 
+    // Auto-sliding every 5 seconds
     let autoSlide = setInterval(() => showSlide(currentIndex + 1), 5000);
+
+    // Pause on hover
     carousel.addEventListener('mouseenter', () => clearInterval(autoSlide));
     carousel.addEventListener('mouseleave', () => {
       autoSlide = setInterval(() => showSlide(currentIndex + 1), 5000);
     });
+
+    // Start at the first slide
     showSlide(0);
   }
 
-  // Fading Overlay Effect (unchanged)
+  // Fading overlay effect for hero and banners
   const overlays = document.querySelectorAll('.hero-overlay, .banner-overlay');
   if (overlays.length > 0) {
     window.addEventListener('scroll', () => {
@@ -109,4 +85,32 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
+
+  // Initialize AOS for fade-in animations
+  AOS.init({
+    duration: 1000, // Animation duration in milliseconds
+    once: true      // Animations occur only once when scrolling into view
+  });
+
+  // CountUp.js for number animations in influence section
+  const numbers = document.querySelectorAll('.number');
+  const observerOptions = {
+    threshold: 0.1 // Trigger when 10% of the element is visible
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const number = entry.target;
+        const target = parseInt(number.getAttribute('data-target'));
+        const countUp = new CountUp(number, 0, target, 0, 2.5); // Animate from 0 to target over 2.5 seconds
+        if (!countUp.error) {
+          countUp.start();
+        }
+        observer.unobserve(number); // Stop observing once animation runs
+      }
+    });
+  }, observerOptions);
+
+  numbers.forEach(number => observer.observe(number));
 });

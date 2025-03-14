@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <style>
-  /* Add this CSS to handle the mobile navigation toggle */
+  /* CSS for mobile navigation toggle */
   .main-nav.active {
     display: block;
   }
@@ -21,35 +21,42 @@
       display: flex;
     }
   }
+  /* CSS to fix the footer to the bottom of the viewport */
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333; /* Adjust to match your theme */
+    color: #fff;
+    padding: 20px 0;
+    z-index: 1000;
+  }
+  body {
+    padding-bottom: 150px; /* Adjust based on footer height */
+  }
 </style>
 <body>
-  <!-- Fixed Header with Dropdown Navigation -->
+  <!-- Fixed Header with Donate Button -->
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="logo">
         <img src="MEF.png" alt="MEF Logo" />
         MARIPHA EMPOWERMENT FOUNDATION
       </a>
-
-  <!-- Hamburger button should come after logo but before nav -->
-  <button class="hamburger" aria-label="Toggle navigation">
-    <i class="fas fa-bars"></i>
-  </button>
-
-  <!-- Navigation menu comes last in the container -->
+      <!-- Hamburger button -->
+      <button class="hamburger" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Navigation menu without dropdowns and with Donate button -->
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li class="dropdown">
-            <a href="#" class="active">ABOUT US</a>
-          <ul class="dropdown-menu">
-            <li><a href="about.html">Our Story</a></li>
-          <li><a href="mission.html">Our Mission</a></li>
-          </ul>
-          </li>
-          <li><a href="programs.html">PROGRAMS</a></li>
-          <li><a href="board.html">OUR BOARD</a></li>
-          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="mission.html">Mission</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="board.html" class="active">Board</a></li>
+          <li><a href="donate.html" class="btn">Donate</a></li>
         </ul>
       </nav>
     </div>
@@ -150,14 +157,27 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer with Newsletter Subscription and Contact Info -->
   <footer>
     <div class="container">
+      <div class="newsletter">
+        <h3>Join Our Newsletter</h3>
+        <form>
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p>Address: 123 Main St, City, Country</p>
+        <p>Phone: +123 456 7890</p>
+        <p>Email: info@maripha.org</p>
+      </div>
       <p>© 2025 Maripha Empowerment Foundation. All rights reserved.</p>
       <div class="social-links">
-        <a href="https://facebook.com/yourpage" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
   </footer>
@@ -173,65 +193,19 @@
     });
   </script>
 
-<script src="js/scripts.js"></script>
+  <script src="js/scripts.js"></script>
 
-  <!-- JavaScript for Navigation Toggle and Carousel -->
+  <!-- JavaScript for Navigation Toggle -->
   <script>
-    // Navigation Toggle
     document.addEventListener('DOMContentLoaded', function() {
-  const hamburger = document.querySelector('.hamburger');
-  const mainNav = document.querySelector('.main-nav');
-  const dropdowns = document.querySelectorAll('.dropdown');
+      const hamburger = document.querySelector('.hamburger');
+      const mainNav = document.querySelector('.main-nav');
 
-  // Toggle main navigation
-  hamburger.addEventListener('click', function() {
-    mainNav.classList.toggle('active');
-  });
-
-  // Toggle dropdowns on click (for mobile)
-  dropdowns.forEach(dropdown => {
-    dropdown.addEventListener('click', function(e) {
-      e.preventDefault(); // Prevent link navigation if desired
-      this.classList.toggle('active');
+      // Toggle main navigation
+      hamburger.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+      });
     });
-  });
-});
-
-    // Carousel
-    let slideIndex = 0;
-    let slideTimeout;
-
-    function getSlideWidth() {
-      return window.innerWidth > 768 ? 100 / 3 : 100;
-    }
-
-    function showSlides() {
-      const slides = document.querySelector('.carousel-inner');
-      const slideWidth = getSlideWidth();
-      slides.style.transform = `translateX(-${slideIndex * slideWidth}%)`;
-      slideIndex++;
-      if (slideIndex >= slides.children.length) {
-        slideIndex = 0;
-      }
-      slideTimeout = setTimeout(showSlides, 3000);
-    }
-
-    function plusSlides(n) {
-      clearTimeout(slideTimeout);
-      const slides = document.querySelector('.carousel-inner');
-      slideIndex += n;
-      if (slideIndex < 0) {
-        slideIndex = slides.children.length - 1;
-      }
-      if (slideIndex >= slides.children.length) {
-        slideIndex = 0;
-      }
-      const slideWidth = getSlideWidth();
-      slides.style.transform = `translateX(-${slideIndex * slideWidth}%)`;
-      slideTimeout = setTimeout(showSlides, 3000);
-    }
-
-    showSlides();
   </script>
 </body>
 </html>

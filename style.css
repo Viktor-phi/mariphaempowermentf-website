@@ -21,6 +21,7 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-light);
+  padding-bottom: 150px; /* Added to prevent content overlap with fixed footer */
 }
 
 .container {
@@ -76,52 +77,27 @@ body {
   transition: color 0.3s ease;
 }
 
-.main-nav a:hover,
-.main-nav a.active {
+.main-nav a:hover {
   color: var(--primary-color);
 }
 
-/* Ensure 'About Us' link is not blue by default */
-.main-nav .dropdown > a {
+/* Ensure 'Home' link is not blue by default */
+.main-nav a {
   color: var(--text-color);
 }
 
-/* Dropdown Menu for 'About Us' */
-.main-nav .dropdown {
-  position: relative;
+/* Style the 'Donate' button in the fixed header */
+.main-nav .btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #000;
+  color: var(--bg-white);
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
-.main-nav .dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: var(--bg-white);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  list-style: none;
-  padding: 10px 0;
-  min-width: 150px;
-}
-
-@media (min-width: 769px) {
-  .main-nav .dropdown:hover .dropdown-menu {
-    display: block; /* Show dropdown on hover for desktop */
-  }
-}
-
-.main-nav .dropdown-menu li {
-  margin: 0;
-}
-
-.main-nav .dropdown-menu a {
-  padding: 10px 20px;
-  color: var(--text-color);
-  text-transform: none;
-  font-weight: normal;
-}
-
-.main-nav .dropdown-menu a:hover {
-  background-color: var(--bg-light);
+.main-nav .btn:hover {
+  background-color: #333;
 }
 
 /* Sign In Button */
@@ -166,90 +142,6 @@ body {
   display: block !important;
 }
 
-/* Enhanced dropdown handling */
-.main-nav .dropdown.active .dropdown-menu {
-  display: block;
-  background-color: var(--bg-light);
-  padding-left: 20px; /* Indent dropdown items */
-}
-
-@media (max-width: 768px) {
-  .hamburger {
-    display: block; /* Show on mobile */
-    order: 2; /* Position after logo in flex container */
-  }
-
-  .main-nav {
-    display: none;
-    position: fixed; /* Changed from absolute for full coverage */
-    top: 70px;
-    left: 0;
-    right: 0;
-    background-color: var(--bg-white);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-height: calc(100vh - 70px);
-    overflow-y: auto;
-  }
-
-  .main-nav ul {
-    flex-direction: column;
-    padding: 10px 0;
-  }
-
-  .main-nav li {
-    margin: 0;
-    position: relative;
-  }
-
-  .main-nav a {
-    display: block;
-    padding: 15px 20px;
-    text-align: left; /* Better mobile alignment */
-  }
-
-  .main-nav .dropdown-menu {
-    position: static;
-    width: 100%;
-    box-shadow: none;
-    padding: 0;
-    animation: none !important;
-  }
-
-  /* Dropdown indicator */
-  .dropdown > a::after {
-    content: "▾";
-    float: right;
-    transition: transform 0.3s ease;
-  }
-
-  .dropdown.active > a::after {
-    transform: rotate(180deg);
-  }
-}
-
-@media (min-width: 769px) {
-  /* Enhanced desktop dropdown */
-  .main-nav .dropdown:hover .dropdown-menu {
-    display: block;
-    animation: dropdownFade 0.3s ease forwards;
-  }
-
-  @keyframes dropdownFade {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hamburger {
-    display: none; /* Ensure hidden on desktop */
-  }
-}
-
 /* Hero Section */
 .hero {
   position: relative;
@@ -268,7 +160,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('Black2.jpg') no-repeat center center fixed;
+  background: url('Farm\ Gate\ 2.png') no-repeat center center fixed;
   background-size: cover;
   z-index: -2;
 }
@@ -321,23 +213,213 @@ body {
 .overview {
   padding: 4rem 0;
   background-color: var(--bg-white);
-  text-align: center;
 }
 
-.overview h2 {
+.overview .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Introductory Section */
+.intro-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 4rem;
+}
+
+.intro-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.intro-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.intro-text p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.intro-image {
+  flex: 1;
+  min-width: 300px;
+}
+
+.intro-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Highlighted Section (Brown Background) */
+.highlighted-section {
+  background-color: #8B5A2B; /* Brown color */
+  color: #fff;
+  padding: 3rem;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 4rem;
+}
+
+.highlighted-section h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.highlighted-section p {
+  font-size: 1.2rem;
   margin-bottom: 1.5rem;
 }
 
-.overview p {
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
+/* Influence Section */
+.influence-section {
+  text-align: center;
+  margin-bottom: 4rem;
 }
 
-.overview-grid {
+.influence-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  margin-top: 40px;
+}
+
+.stat {
+  background-color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.stat .number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.stat p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Stories Section */
+.stories-section {
+  text-align: center;
+}
+
+.stories-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.story-card {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-5px);
+}
+
+.story-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.story-card h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0 0.5rem;
+  color: var(--text-color);
+}
+
+.story-card p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0 1rem 1rem;
+}
+
+/* Read More Button Styling */
+.read-more {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #2E5A4A; /* Dark green color from Agroecology Fund */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.read-more:hover {
+  background-color: #1A3C34; /* Darker green on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .intro-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro-text h2 {
+    font-size: 2rem;
+  }
+
+  .intro-text p {
+    font-size: 1rem;
+  }
+
+  .highlighted-section {
+    padding: 2rem;
+  }
+
+  .highlighted-section h3 {
+    font-size: 1.5rem;
+  }
+
+  .highlighted-section p {
+    font-size: 1rem;
+  }
+
+  .influence-section h2 {
+    font-size: 2rem;
+  }
+
+  .stat .number {
+    font-size: 2rem;
+  }
+
+  .stories-section h2 {
+    font-size: 2rem;
+  }
+
+  .story-card h3 {
+    font-size: 1.3rem;
+  }
 }
 
 .overview-grid .card {
@@ -384,13 +466,13 @@ body {
     min-height: 250px; /* Prevent becoming too small */
   }
 
-/* Optional: Add aspect-ratio fallback */
-@supports (aspect-ratio: 16/9) {
-  .carousel-inner img {
-    height: auto;
-    aspect-ratio: 16/9;
+  /* Optional: Add aspect-ratio fallback */
+  @supports (aspect-ratio: 16/9) {
+    .carousel-inner img {
+      height: auto;
+      aspect-ratio: 16/9;
+    }
   }
-}
 }
 
 .carousel-inner img {
@@ -616,7 +698,7 @@ body {
   opacity: 0.7; /* Fixed from 0 to maintain visibility */
 }
 
-/* Contact Content */
+/* Contact Content (kept but not used since contact page is removed) */
 .contact-content {
   padding: 4rem 0;
   background-color: var(--bg-white);
@@ -666,36 +748,54 @@ body {
   border-radius: 5px;
 }
 
-/* Footer */
+/* Footer (Fixed to bottom with updated layout) */
 footer {
   background-color: var(--text-color);
   color: var(--bg-white);
-  padding: 40px 0;
-  text-align: center;
+  padding: 5px 0; /* Reduced padding for a more compact footer */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-.newsletter {
-  margin-bottom: 20px;
+/* Grid Layout for Footer Container */
+footer .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* Three equal-width columns */
+  grid-template-rows: auto auto; /* Two rows: headings and content */
+  gap: 10px; /* Spacing between grid items */
 }
 
-.newsletter h3 {
-  margin-bottom: 10px;
+/* Newsletter Section */
+footer .newsletter {
+  grid-column: 1; /* Left column */
+  grid-row: 1 / 3; /* Spans both rows */
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px; /* Horizontal padding for spacing */
+}
+
+footer .newsletter h3 {
+  margin-bottom: auto; /* Pushes form to the bottom */
+  text-align: left;
   text-transform: uppercase;
 }
 
-.newsletter form {
+footer .newsletter form {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* Align form to the left */
 }
 
-.newsletter input {
+footer .newsletter input {
   padding: 10px;
   border: none;
   border-radius: 5px 0 0 5px;
   width: 200px;
 }
 
-.newsletter button {
+footer .newsletter button {
   padding: 10px 20px;
   background-color: var(--primary-color);
   color: var(--bg-white);
@@ -704,8 +804,40 @@ footer {
   cursor: pointer;
 }
 
+/* Contact Information Section */
+footer .contact-info {
+  grid-column: 3; /* Right column */
+  grid-row: 1 / 3; /* Spans both rows */
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px; /* Horizontal padding for spacing */
+}
+
+footer .contact-info h3 {
+  margin-bottom: auto; /* Pushes contact details to the bottom */
+  text-align: right;
+  font-size: 1.2rem;
+}
+
+footer .contact-info p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+/* Copyright Text */
 footer p {
-  margin-bottom: 0.5rem;
+  grid-column: 2; /* Center column */
+  grid-row: 1; /* First row */
+  text-align: center;
+  margin: 0;
+}
+
+/* Social Media Links */
+footer .social-links {
+  grid-column: 2; /* Center column */
+  grid-row: 2; /* Second row */
+  text-align: center;
 }
 
 footer .social-links a {
@@ -717,6 +849,44 @@ footer .social-links a {
 
 footer .social-links a:hover {
   color: var(--primary-color);
+}
+
+/* Adjust Body Padding */
+body {
+  padding-bottom: 100px; /* Reduced from 150px to match smaller footer */
+}
+
+/* Responsive Styling for Mobile */
+@media (max-width: 768px) {
+  footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer .newsletter,
+  footer .contact-info,
+  footer p,
+  footer .social-links {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  footer .newsletter h3,
+  footer .contact-info h3,
+  footer .contact-info p {
+    text-align: center;
+  }
+
+  footer .newsletter form {
+    justify-content: center; /* Center form on mobile */
+  }
+
+  footer .newsletter h3,
+  footer .contact-info h3 {
+    margin-bottom: 5px;
+  }
 }
 
 /* Responsive Styling */
@@ -754,21 +924,6 @@ footer .social-links a:hover {
     padding: 10px;
   }
 
-  .main-nav .dropdown-menu {
-    position: static;
-    box-shadow: none;
-    width: 100%;
-    padding: 0;
-  }
-
-  .main-nav .dropdown:hover .dropdown-menu {
-    display: none; /* Disable hover on mobile */
-  }
-
-  .main-nav .dropdown.active .dropdown-menu {
-    display: block; /* Show dropdown when parent has 'active' class */
-  }
-
   .sign-in-btn {
     display: none; /* Keep hidden on mobile */
   }
@@ -789,6 +944,25 @@ footer .social-links a:hover {
 
   .overview {
     margin-top: 2rem;
+  }
+
+  /* Footer adjustments */
+  footer .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer .newsletter, footer .contact-info {
+    margin: 10px 0;
+    text-align: center; /* Center on mobile */
+  }
+
+  footer .newsletter h3, footer .contact-info h3, footer .contact-info p {
+    text-align: center; /* Center headings and text on mobile */
+  }
+
+  footer .newsletter form {
+    justify-content: center; /* Center form on mobile */
   }
 }
 
