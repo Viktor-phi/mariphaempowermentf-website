@@ -1,21 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Hamburger Menu Toggle
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('.main-nav');
+    // Update hamburger menu toggle
+hamburger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    nav.classList.toggle('active');
+    // Toggle aria-expanded attribute
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !isExpanded);
+  });
   
-    hamburger.addEventListener('click', function(e) {
-      e.stopPropagation();
-      nav.classList.toggle('active');
-    });
-  
-    // Close Menu on Link Click or Escape
-    document.querySelectorAll('.main-nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          nav.classList.remove('active');
-        }
-      });
-    });
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768 && 
+        !nav.contains(e.target) && 
+        !hamburger.contains(e.target)) {
+      nav.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
   
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && nav.classList.contains('active')) {

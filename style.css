@@ -3,7 +3,7 @@
   --earth-green: #2E5A4A;   /* Primary earthy green */
   --earth-brown: #8B5A2B;   /* Earthy brown */
   --earth-blue: #4A90E2;    /* Earthy blue */
-  --cta-orange: #FFA500;    /* Orange for CTAs */
+  --cta-orange: #8B5A2B;    /* Orange for CTAs */
   --text-color: #333;       /* Default text */
   --bg-light: #f9f9f9;      /* Light background */
   --bg-white: #fff;         /* White background */
@@ -38,7 +38,7 @@ body {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 1000;
+  z-index: 1001; /* Increase z-index to ensure menu stays on top */
 }
 
 .site-header .container {
@@ -245,7 +245,7 @@ h2 {
 .highlighted-section {
     background-color: var(--earth-brown);
     color: #fff;
-    padding: 4rem 0;
+    padding: 1rem 0;
     margin-top: -2rem;
     overflow: hidden; /* Prevent overflow during animation */
   }
@@ -310,15 +310,27 @@ h2 {
     line-height: 1.4;
   }
 
-  /* For better mobile display */
+  /* Update stats grid for mobile */
 @media (max-width: 768px) {
     .stats-grid {
-      grid-template-columns: repeat(4, minmax(200px, 1fr));
-      width: max-content;
-      margin-left: auto;
-      margin-right: auto;
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 1rem;
+      width: 100%;
+      scrollbar-width: none; /* Firefox */
     }
-  }
+
+    .stats-grid::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+      }
+    
+      .stat-item {
+        flex: 0 0 200px;
+        margin-right: 1rem;
+      }
+    }
   
   /* Existing fadeInUp keyframes remains */
 @keyframes fadeInUp {
@@ -445,3 +457,33 @@ main {
     width: 100%;
   }
 }
+
+/* Update mobile navigation styles */
+@media (max-width: 768px) {
+    .main-nav {
+      display: none;
+      position: absolute;
+      top: 100%; /* Position below header */
+      left: 0;
+      width: 100%;
+      background-color: var(--bg-white);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000; /* Ensure it appears above content */
+    }
+  
+    .main-nav ul {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  
+    .main-nav li {
+      margin: 0.5rem 0;
+    }
+  
+    /* Show donation button in mobile menu */
+    .main-nav .btn {
+      display: inline-block;
+      width: auto;
+      margin: 0.5rem 0;
+    }
+  }
