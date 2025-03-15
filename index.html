@@ -6,6 +6,49 @@
   <title>MARIPHA EMPOWERMENT FOUNDATION - Home</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Add this CSS to handle the mobile navigation toggle */
+    .main-nav.active {
+      display: block;
+    }
+    .main-nav {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .main-nav {
+        display: flex;
+      }
+    }
+    /* Ensure the donate button is visible on mobile */
+    .main-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .main-nav ul li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .main-nav ul li a.btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff6f61; /* Adjust button color as needed */
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    @media (max-width: 767px) {
+      .main-nav ul li {
+        display: block;
+        margin-bottom: 10px;
+      }
+      .main-nav ul li a.btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -76,6 +119,8 @@
     </div>
   </div>
 </section>
+<br>
+<br>
 
 <section class="collaboration-section">
   <div class="grid-container">
@@ -89,6 +134,8 @@
     </div>
   </div>
 </section>
+<br>
+<br>
 
 <!-- Add this after the collaboration-section -->
 <section class="highlighted-section impact-stats">
