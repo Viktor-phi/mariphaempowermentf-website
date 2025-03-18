@@ -1,28 +1,33 @@
+// Improved Hamburger Menu Functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Update hamburger menu toggle
-hamburger.addEventListener('click', function(e) {
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('.main-nav');
+  const body = document.body;
+
+  // Toggle mobile menu
+  hamburger.addEventListener('click', function(e) {
     e.stopPropagation();
     nav.classList.toggle('active');
-    // Toggle aria-expanded attribute
-    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', !isExpanded);
+    hamburger.setAttribute('aria-expanded', nav.classList.contains('active'));
   });
   
-  // Close menu when clicking outside
+  // Close menu on click outside
   document.addEventListener('click', (e) => {
-    if (window.innerWidth <= 768 && 
-        !nav.contains(e.target) && 
-        !hamburger.contains(e.target)) {
+    if (nav.classList.contains('active') && 
+        !e.target.closest('.main-nav') && 
+        !e.target.closest('.hamburger')) {
       nav.classList.remove('active');
       hamburger.setAttribute('aria-expanded', 'false');
     }
   });
-  
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && nav.classList.contains('active')) {
-        nav.classList.remove('active');
-      }
-    });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('active')) {
+      nav.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
   
     // Carousel Continuous Slide
     const carouselInner = document.querySelector('.carousel-inner');
@@ -41,50 +46,39 @@ hamburger.addEventListener('click', function(e) {
       slide();
     }
   
-    // Improved Count-Up Animation
-    function animateNumber(element, target) {
-      const duration = 2000; // 2 seconds animation
+    // Improved Counter Animation
+  const animateCounters = () => {
+    const counters = document.querySelectorAll('.stat-number');
+    const duration = 2000;
+    
+    counters.forEach(counter => {
+      const target = +counter.dataset.target;
+      const start = 0;
       const startTime = performance.now();
-      
-      const updateNumber = (currentTime) => {
+
+      const updateCounter = (currentTime) => {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
         const current = Math.floor(progress * target);
         
-        element.textContent = current.toLocaleString();
+        counter.textContent = current === target ? `${current}+` : current;
         
         if (progress < 1) {
-          requestAnimationFrame(updateNumber);
-        } else {
-          element.textContent = target.toLocaleString();
+          requestAnimationFrame(updateCounter);
         }
       };
-  
-      requestAnimationFrame(updateNumber);
-    }
-  
-    // Initialize Count-Up Observer
-    function initCountUp() {
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const stats = entry.target.querySelectorAll('.stat-number');
-            stats.forEach(stat => {
-              const target = parseInt(stat.dataset.target, 10);
-              if (!isNaN(target)) {
-                animateNumber(stat, target);
-              }
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-  
-      document.querySelectorAll('.impact-stats').forEach(section => {
-        observer.observe(section);
-      });
-    }
-  
-    // Initialize count-up when page loads
-    initCountUp();
-  });
+      
+      requestAnimationFrame(updateCounter);
+    });
+  };
+
+  // Initialize counters when section is visible
+  new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 }).observe(document.querySelector('.impact-stats'));
+});
