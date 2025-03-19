@@ -4,30 +4,21 @@ document.addEventListener('DOMContentLoaded', function() {
   const nav = document.querySelector('.main-nav');
   const body = document.body;
 
-  // Toggle mobile menu
-  hamburger.addEventListener('click', function(e) {
-    e.stopPropagation();
-    nav.classList.toggle('active');
-    hamburger.setAttribute('aria-expanded', nav.classList.contains('active'));
-  });
+  var menuElement = document.querySelector("#menu")
+  var menuButtonElement = document.querySelector("#menu-button")
   
-  // Close menu on click outside
-  document.addEventListener('click', (e) => {
-    if (nav.classList.contains('active') && 
-        !e.target.closest('.main-nav') && 
-        !e.target.closest('.hamburger')) {
-      nav.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
+  function toggleMenuVisibility(){
+    var currentStatus = menuElement.getAttribute("status")
+  
+    if(currentStatus === "visible"){
+      menuElement.setAttribute("status", "hidden")
+  +    menuButtonElement.setAttribute("aria-expanded", "false")
     }
-  });
-
-  // Close menu on escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && nav.classList.contains('active')) {
-      nav.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
+    else{
+      menuElement.setAttribute("status", "visible")
+  +    menuButtonElement.setAttribute("aria-expanded", "true")
     }
-  });
+  };
   
     // Carousel Continuous Slide
     const carouselInner = document.querySelector('.carousel-inner');
