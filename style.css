@@ -161,49 +161,6 @@
   background-color: var(--earth-brown);
 }
 
-/* School Tour Photos Section */
-.school-tour {
-  padding: 3rem 20px;
-}
-
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.photo-card {
-  text-align: center;
-}
-
-.photo-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.photo-caption {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.1rem;
-  color: var(--earth-green);
-  margin-top: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  .photo-grid {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-  }
-  
-  .photo-card img {
-    height: 300px;
-  }
-}
-
 /* Impact Stories Section */
 .impact-stories {
   padding: 2rem 0;
@@ -457,6 +414,180 @@ footer h3 {
   font-size: 1.2rem;
 }
 
+/* Split Screen Layout */
+.split-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.split-left {
+  background: var(--bg-light);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.split-right {
+  background: var(--earth-green);
+  color: var(--bg-white);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.brown-split .split-left {
+  background: var(--earth-brown);
+  color: white;
+}
+
+.brown-split .split-right {
+  background: var(--bg-white);
+  color: black;
+}
+
+/* Ensure all split containers have consistent styling */
+.split-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 60vh;
+}
+
+.split-left, .split-right {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .split-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .content-segment {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Maintain existing fade-up animations */
+.fade-up-content {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Segments Container */
+.segments-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 20px;
+}
+
+.segment-box {
+  background: var(--bg-white);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  height: 100%;
+}
+
+.segment-box h3 {
+  color: var(--earth-green);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.segment-box ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.segment-box li {
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.segment-box li:before {
+  content: "•";
+  color: var(--earth-brown);
+  position: absolute;
+  left: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .segments-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 15px;
+  }
+  
+  .segment-box {
+    padding: 1.5rem;
+  }
+}
+
+/* Adjust existing styles for split layout */
+.about-page .hero {
+  height: auto;
+  margin-top: 0;
+  background: transparent;
+}
+
+.about-page .hero-content {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.about-page .highlighted-section {
+  background: transparent;
+  padding: 0;
+}
+
+.mission-statement {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+  .split-container {
+    grid-template-columns: 1fr;
+  }
+
+  .split-left,
+  .split-right {
+    padding: 1.5rem;
+    min-height: 50vh;
+  }
+
+  .about-page .hero h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Visual Contrast Enhancements */
+.split-right .btn {
+  background: var(--cta-orange);
+  border: 2px solid var(--bg-white);
+}
+
+.split-right .bold-statement {
+  color: var(--bg-light);
+}
+
+.split-right .image-container img {
+  border: 3px solid var(--bg-white);
+}
+
 /* Ensure content appears below hero */
 main {
   margin-top: 70px; /* Push content below fixed header */
@@ -465,86 +596,6 @@ main {
 /* Hide hamburger by default (for desktop) */
 .hamburger {
   display: none;
-}
-
-/* Updated Mobile Header Styles */
-@media (max-width: 768px) {
-  .site-header .container {
-    padding: 0.8rem 1rem;
-    align-items: center;
-  }
-
-  .logo img {
-    width: 35px;
-    margin-right: 8px;
-  }
-
-  .logo {
-    font-size: 1.2rem;
-    padding: 0;
-    flex-shrink: 0;
-  }
-
-  .hamburger {
-    font-size: 1.8rem;
-    color: var(--earth-green);
-    padding: 0.25rem;
-    z-index: 1001;
-  }
-
-  /* Improved Mobile Menu */
-  .main-nav {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background: var(--bg-white);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
-
-  .main-nav.active {
-    max-height: 500px;
-    padding: 1rem;
-  }
-
-  .main-nav ul {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  .main-nav li {
-    margin: 0;
-  }
-
-  .main-nav a {
-    padding: 0.8rem;
-    width: 100%;
-    font-size: 1.1rem;
-  }
-
-  .main-nav .btn {
-    margin: 0.5rem 0 0;
-    width: 100%;
-    text-align: center;
-  }
-
-  /* Improved Stats Grid */
-  .stats-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 1rem;
-  }
-
-  .stat-item {
-    flex: 0 0 85vw;
-    scroll-snap-align: start;
-    margin-right: 1.5rem;
-  }
 }
 
 /* Updated Navigation Alignment */
