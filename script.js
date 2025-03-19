@@ -4,40 +4,34 @@ document.addEventListener('DOMContentLoaded', function() {
   const nav = document.querySelector('.main-nav');
   const body = document.body;
 
-  var menuElement = document.querySelector("#menu")
-  var menuButtonElement = document.querySelector("#menu-button")
+  // Updated function to toggle the .active class
+  function toggleMenuVisibility() {
+    nav.classList.toggle('active');
+    const isExpanded = nav.classList.contains('active');
+    hamburger.setAttribute('aria-expanded', isExpanded);
+  }
+
+  // Add event listener to hamburger button
+  hamburger.addEventListener('click', toggleMenuVisibility);
   
-  function toggleMenuVisibility(){
-    var currentStatus = menuElement.getAttribute("status")
+  // Carousel Continuous Slide
+  const carouselInner = document.querySelector('.carousel-inner');
+  if (carouselInner) {
+    const slides = carouselInner.querySelectorAll('.slide');
+    slides.forEach(slide => carouselInner.appendChild(slide.cloneNode(true)));
+    let position = 0;
+    const speed = 0.1;
   
-    if(currentStatus === "visible"){
-      menuElement.setAttribute("status", "hidden")
-  +    menuButtonElement.setAttribute("aria-expanded", "false")
+    function slide() {
+      position -= speed;
+      if (position <= -100) position = 0;
+      carouselInner.style.transform = `translateX(${position}%)`;
+      requestAnimationFrame(slide);
     }
-    else{
-      menuElement.setAttribute("status", "visible")
-  +    menuButtonElement.setAttribute("aria-expanded", "true")
-    }
-  };
+    slide();
+  }
   
-    // Carousel Continuous Slide
-    const carouselInner = document.querySelector('.carousel-inner');
-    if (carouselInner) {
-      const slides = carouselInner.querySelectorAll('.slide');
-      slides.forEach(slide => carouselInner.appendChild(slide.cloneNode(true)));
-      let position = 0;
-      const speed = 0.1;
-  
-      function slide() {
-        position -= speed;
-        if (position <= -100) position = 0;
-        carouselInner.style.transform = `translateX(${position}%)`;
-        requestAnimationFrame(slide);
-      }
-      slide();
-    }
-  
-    // Improved Counter Animation
+  // Improved Counter Animation
   const animateCounters = () => {
     const counters = document.querySelectorAll('.stat-number');
     const duration = 2000;
