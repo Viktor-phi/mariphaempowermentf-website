@@ -1,1 +1,174 @@
+<!DOCTYPE html>
+<html class="js" lang="{{requst.locale.iso_code}}">
+<head>
+  <!--stylesheet-->
+  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MARIPHA EMPOWERMENT FOUNDATION - Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Add this CSS to handle the mobile navigation toggle */
+    .main-nav.active {
+      display: block;
+    }
+    .main-nav {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .main-nav {
+        display: flex;
+      }
+    }
+    /* Ensure the donate button is visible on mobile */
+    .main-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .main-nav ul li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .main-nav ul li a.btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #2E5A4A; /* Earthy green color */
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    @media (max-width: 767px) {
+      .main-nav ul li {
+        display: block;
+        margin-bottom: 10px;
+      }
+      .main-nav ul li a.btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body class="about-page">
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="MEF.png" alt="MEF Logo" />
+        MARIPHA EMPOWERMENT FOUNDATION
+      </a>
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="mission.html">Mission</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="board.html">Board</a></li>
+          <li><a href="donate.html" class="btn">Donate</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
+  <body class="board-page">
+    <main>
+      <!-- Board Members Split Layout -->
+      <div class="split-container fade-up">
+        <div class="split-left bg-light">
+          <div class="board-member">
+            <img src="MEF B1.jpg" alt="Mariam Olorundare">
+            <h2>Mariam Olorundare</h2>
+            <p class="position">Director and Founder</p>
+            <p class="bio">Visionary leader with 15+ years in agricultural empowerment initiatives.</p>
+          </div>
+        </div>
+
+        <div class="split-right earth-green">
+        <div class="board-member">
+          <img src="Pamela.jpg" alt="Pamela C. Eto">
+          <h2>Pamela C. Eto</h2>
+          <p class="position">Board Member</p>
+          <p class="bio">Expert in sustainable farming practices and community development.</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="split-container fade-up" style="animation-delay: 0.3s;">
+        <div class="split-left earth-brown">
+          <div class="board-member">
+            <img src="Omotesho.jpg" alt="Olubunmi A. Omotesho">
+            <h2>Olubunmi A. Omotesho</h2>
+            <p class="position">Board Member</p>
+            <p class="bio">Financial strategist specializing in agricultural investments.</p>
+          </div>
+        </div>
+
+        <div class="split-right bg-light">
+        <div class="board-member">
+          <img src="B & W -1.jpg" alt="Victor A. Ibeto">
+          <h2>Victor A. Ibeto</h2>
+          <p class="position">Board Member</p>
+          <p class="bio">Technology integration expert for modern farming solutions.</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="split-container fade-up" style="animation-delay: 0.6s;">
+        <div class="split-left earth-green">
+          <div class="board-member">
+            <img src="Brian.jpg" alt="Brian A. Stephenson">
+            <h2>Brian A. Stephenson</h2>
+            <p class="position">Board Member</p>
+            <p class="bio">Youth empowerment advocate and educational specialist.</p>
+          </div>
+        </div>
+
+        <div class="split-right earth-brown">
+        <div class="board-member">
+          <img src="Olusola.jpg" alt="Olusola Seriki">
+          <h2>Olusola Seriki</h2>
+          <p class="position">Board Member</p>
+          <p class="bio">International development consultant focusing on African agriculture.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+<br>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="newsletter">
+        <h3>Join Our Newsletter</h3>
+        <form>
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p>Address: 123 Main St, City, Country</p>
+        <p>Phone: +123 456 7890</p>
+        <p>Email: info@maripha.org</p>
+      </div>
+      <p>© 2025 Maripha Empowerment Foundation. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" target="_blank"><i class="fab fa-facebook" aria-label="Facebook"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter" aria-label="Twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram" aria-label="Instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+  <script>
+  </script>
+</body>
+</html>

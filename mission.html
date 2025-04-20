@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html class="js" lang="{{requst.locale.iso_code}}">
+<head>
+  <!--stylesheet-->
+  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MARIPHA EMPOWERMENT FOUNDATION - Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Add this CSS to handle the mobile navigation toggle */
+    .main-nav.active {
+      display: block;
+    }
+    .main-nav {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .main-nav {
+        display: flex;
+      }
+    }
+    /* Ensure the donate button is visible on mobile */
+    .main-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .main-nav ul li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .main-nav ul li a.btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #2E5A4A; /* Earthy green color */
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    @media (max-width: 767px) {
+      .main-nav ul li {
+        display: block;
+        margin-bottom: 10px;
+      }
+      .main-nav ul li a.btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body class="about-page">
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="MEF.png" alt="MEF Logo" />
+        MARIPHA EMPOWERMENT FOUNDATION
+      </a>
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="mission.html">Mission</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="board.html">Board</a></li>
+          <li><a href="donate.html" class="btn">Donate</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
+<!-- Updated main content structure -->
+<main>
+    <!-- First Split Screen -->
+    <div class="split-container">
+      <div class="split-left">
+        <!-- Hero Section -->
+        <section class="hero">
+          <div class="hero-content">
+            <div class="fade-up-content">
+              <h1 class="uppercase-title">Bridging Generational Divide in Agriculture</h1>
+              <p>Join us in our journey to make a difference.</p>
+              <a href="mission.html" class="btn">Learn More</a>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="split-right">
+        <!-- Mission Section -->
+        <section class="highlighted-section">
+          <div class="fade-up-content">
+            <div class="mission-statement">
+              <h2>Our Mission</h2>
+              <p>To empower young people to take up farming through innovative training programs.</p>
+            </div>
+          </div>
+        </section>
+        <!-- Empowerment Section -->
+        <section class="empowerment-section">
+          <div class="fade-up-content">
+            <h3>Youth Empowerment Model</h3>
+            <p class="bold-statement">Practical field experience with modern techniques</p>
+            <a href="programs.html" class="btn">Explore Programs</a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+   <!-- In your HTML after the first split-container -->
+<section class="segments-container">
+    <div class="content-segment fade-up-content">
+      <div class="segment-box">
+        <h3>Storage & Tools</h3>
+        <ul>
+          <li>5 TB team storage</li>
+          <li>Connect all devices</li>
+          <li>50 GB transfers</li>
+          <li>180-day restore</li>
+          <li>Admin setup</li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="content-segment fade-up-content">
+      <div class="segment-box">
+        <h3>Security</h3>
+        <ul>
+          <li>Enterprise security</li>
+          <li>Security integrations</li>
+          <li>100 GB transfers</li>
+          <li>1-year restore</li>
+          <li>Tiered admin roles</li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="content-segment fade-up-content">
+      <div class="segment-box">
+        <h3>Support</h3>
+        <ul>
+          <li>Custom storage</li>
+          <li>Premium integrations</li>
+          <li>Expert support</li>
+          <li>Extended restore</li>
+          <li>Advanced controls</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+    <!-- Second Split Screen -->
+    <div class="split-container brown-split">
+      <div class="split-left">
+        <div class="fade-up-content">
+          <h2>Sustainable Practices</h2>
+          <p>Learn about our eco-friendly agricultural methods.</p>
+        </div>
+      </div>
+      <div class="split-right">
+        <div class="fade-up-content">
+          <h2>Community Impact</h2>
+          <p>Discover how we're transforming local communities.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="newsletter">
+        <h3>Join Our Newsletter</h3>
+        <form>
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p>Address: 123 Main St, City, Country</p>
+        <p>Phone: +123 456 7890</p>
+        <p>Email: info@maripha.org</p>
+      </div>
+      <p>© 2025 Maripha Empowerment Foundation. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" target="_blank"><i class="fab fa-facebook" aria-label="Facebook"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter" aria-label="Twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram" aria-label="Instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+  <script>
+  </script>
+</body>
+</html>
